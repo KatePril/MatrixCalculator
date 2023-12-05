@@ -5,11 +5,11 @@ import app.view.elements.MatrixInput;
 import javax.swing.*;
 
 public class VisualMatrix {
-    private final int size;
+    private final int SIZE;
     private MatrixInput[][] fields;
 
     public VisualMatrix(int size) {
-        this.size = size;
+        this.SIZE = size;
         fields = new MatrixInput[size][size];
         for (int i = 0; i < size; i++) {
             for (int j = 0; j < size; j++) {
@@ -19,9 +19,9 @@ public class VisualMatrix {
     }
 
     public int[][] getValues() {
-        int[][] values = new int[size][size];
-        for (int i = 0; i < size; i++) {
-            for (int j = 0; j < size; j++) {
+        int[][] values = new int[SIZE][SIZE];
+        for (int i = 0; i < SIZE; i++) {
+            for (int j = 0; j < SIZE; j++) {
                 if (fields[i][j].getText().trim().isEmpty()) {
                     values[i][j] = 0;
                 } else {
@@ -37,15 +37,15 @@ public class VisualMatrix {
     }
 
     public void drawMatrix(JPanel panel) {
-        for (int i = 0; i < size; i++) {
-            for (int j = 0; j < size; j++) {
+        for (int i = 0; i < SIZE; i++) {
+            for (int j = 0; j < SIZE; j++) {
                 panel.add(fields[i][j]);
             }
         }
     }
 
     public int getSize() {
-        return size;
+        return SIZE;
     }
 
     public MatrixInput[][] getFields() {
