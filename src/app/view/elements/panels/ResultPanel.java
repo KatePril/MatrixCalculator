@@ -5,10 +5,20 @@ import java.awt.*;
 
 public class ResultPanel extends JPanel {
 
+    private MatrixPanel matrix;
+
     public ResultPanel(int size) {
         JLabel label = new JLabel("=");
         add(label);
-        MatrixPanel panel = new MatrixPanel(size);
-        add(panel);
+        matrix = new MatrixPanel(size);
+        add(matrix);
+    }
+
+    public MatrixPanel getMatrix() {
+        return matrix;
+    }
+
+    public void setMatrix(MatrixPanel matrix) {
+        this.matrix = matrix;
     }
 }

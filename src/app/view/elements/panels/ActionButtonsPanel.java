@@ -20,4 +20,28 @@ public class ActionButtonsPanel extends JPanel {
         add(subtractionButton);
         add(multiplicationButton);
     }
+
+    public ActionButton getAdditionButton() {
+        return additionButton;
+    }
+
+    public void setAdditionButton(ActionButton additionButton) {
+        this.additionButton = additionButton;
+    }
+
+    public ActionButton getSubtractionButton() {
+        return subtractionButton;
+    }
+
+    public void setSubtractionButton(ActionButton subtractionButton) {
+        this.subtractionButton = subtractionButton;
+    }
+
+    public ActionButton getMultiplicationButton() {
+        return multiplicationButton;
+    }
+
+    public void setMultiplicationButton(ActionButton multiplicationButton) {
+        this.multiplicationButton = multiplicationButton;
+    }
 }

@@ -12,15 +12,23 @@ public class MatrixPanel extends JPanel {
     private int width;
     private int height;
 
-    private VisualMatrix matrixTemplate;
+    private VisualMatrix matrix;
 
     public MatrixPanel(int size) {
         width = INPUT_WIDTH * size + (size - 1) * 10;
         height = INPUT_HEIGHT * size + (size - 1) * 10;
         setPreferredSize(new Dimension(width, height));
 
-        matrixTemplate = new VisualMatrix(size);
-        matrixTemplate.drawMatrix(this);
+        matrix = new VisualMatrix(size);
+        matrix.drawMatrix(this);
+    }
+
+    public VisualMatrix getMatrix() {
+        return matrix;
+    }
+
+    public void setMatrix(VisualMatrix matrix) {
+        this.matrix = matrix;
     }
 
     @Override
