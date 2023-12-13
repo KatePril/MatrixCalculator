@@ -36,6 +36,14 @@ public class VisualMatrix {
         return values;
     }
 
+    public void fillFields(int[][] values) {
+        for (int i = 0; i < SIZE; i++) {
+            for (int j = 0; j < SIZE; j++) {
+                fields[i][j].setText(Integer.toString(values[i][j]));
+            }
+        }
+    }
+
     public void drawMatrix(JPanel panel) {
         for (int i = 0; i < SIZE; i++) {
             for (int j = 0; j < SIZE; j++) {
