@@ -20,6 +20,7 @@ public class CalculatorFrame extends JFrame {
         setLocation(X, Y);
         panel = new CalculatorPanel();
         getContentPane().add(panel, BorderLayout.CENTER);
+        setDefaultCloseOperation(EXIT_ON_CLOSE);
         setVisible(true);
     }
 
