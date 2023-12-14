@@ -24,6 +24,10 @@ public class CalculatorView {
         return frame.getPanel().getPanel().getMatrixB().getMatrix().getMatrix().getValues();
     }
 
+    public int[][] getResultMatrixFields() {
+        return frame.getPanel().getPanel().getResultMatrix().getMatrix().getMatrix().getMatrix().getValues();
+    }
+
     public void setResultMatrixFields(int[][] fields) {
         frame.getPanel().getPanel().getResultMatrix().getMatrix().getMatrix().getMatrix().fillFields(fields);
     }
