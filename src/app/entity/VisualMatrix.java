@@ -18,15 +18,15 @@ public class VisualMatrix {
         }
     }
 
-    public int[][] getValues() {
-        int[][] values = new int[SIZE][SIZE];
+    public String[][] getValues() {
+        String[][] values = new String[SIZE][SIZE];
         for (int i = 0; i < SIZE; i++) {
             for (int j = 0; j < SIZE; j++) {
                 if (fields[i][j].getText().trim().isEmpty()) {
-                    values[i][j] = 0;
+                    values[i][j] = "0";
                 } else {
                     try {
-                        values[i][j] = Integer.parseInt(fields[i][j].getText());
+                        values[i][j] = fields[i][j].getText();
                     } catch (NumberFormatException e) {
                         throw new RuntimeException();
                     }

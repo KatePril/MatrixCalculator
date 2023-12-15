@@ -1,5 +1,6 @@
 package app.view;
 import app.view.elements.CalculatorFrame;
+import app.view.elements.panels.CalculatorMatrixPanel;
 
 import javax.swing.*;
 
@@ -8,23 +9,40 @@ public class CalculatorView {
 
     public CalculatorView() {
         frame = new CalculatorFrame("Calculator");
-        frame.getPanel().getSizeSelector().addActionListener(l -> {
-            frame.getPanel().getPanel().changeSize((Integer) frame.getPanel().getSizeSelector().getSelectedItem());
-            System.out.println(frame.getPanel().getSizeSelector().getSelectedItem());
+//        frame.getPanel().getSizeSelector().addActionListener(l -> {
+//            frame.getPanel().getPanel().changeSize((Integer) frame.getPanel().getSizeSelector().getSelectedItem());
+//            System.out.println(frame.getPanel().getSizeSelector().getSelectedItem());
+//
+//        });
+    }
 
-        });
+    public CalculatorMatrixPanel getMatrixPanel() {
+        return frame.getPanel().getPanel();
+    }
+
+    public JComboBox<Integer> getSizeSelector() {
+        return frame.getPanel().getSizeSelector();
     }
 
 
-    public int[][] getMatrixAFields() {
+    public String[][] getMatrixAFields() {
         return frame.getPanel().getPanel().getMatrixA().getMatrix().getMatrix().getValues();
     }
 
-    public int[][] getMatrixBFields() {
+    public void setMatrixAFields(int[][] fields) {
+        frame.getPanel().getPanel().getMatrixA().getMatrix().getMatrix().fillFields(fields);
+    }
+
+    public String[][] getMatrixBFields() {
         return frame.getPanel().getPanel().getMatrixB().getMatrix().getMatrix().getValues();
     }
 
-    public int[][] getResultMatrixFields() {
+    public void setMatrixBFields(int[][] fields) {
+        frame.getPanel().getPanel().getMatrixB().getMatrix().getMatrix().fillFields(fields);
+    }
+
+
+    public String[][] getResultMatrixFields() {
         return frame.getPanel().getPanel().getResultMatrix().getMatrix().getMatrix().getMatrix().getValues();
     }
 
@@ -64,4 +82,7 @@ public class CalculatorView {
         frame.getPanel().setLabelText(text);
     }
 
+    public CalculatorFrame getFrame() {
+        return frame;
+    }
 }

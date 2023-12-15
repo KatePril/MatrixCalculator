@@ -7,11 +7,15 @@ public class MatrixTransposer extends MatrixOperator{
         super(size);
     }
 
-    public void transposeMatrix(Matrix a) {
-        for (int i = 0; i < newMatrix.getSize(); i++) {
-            for (int j = 0; j < newMatrix.getSize(); j++) {
-                newMatrix.setElement(j, i, a.getElement(i, j));
+    public int[][] transposeMatrix(int[][] a) {
+        int[][] newMatrix = new int[a.length][a.length];
+        for (int i = 0; i < a.length; i++) {
+            for (int j = 0; j < a.length; j++) {
+                newMatrix[j][i] = a[i][j];
+//                newMatrix.setElement(j, i, a.getElement(i, j));
             }
         }
+
+        return newMatrix;
     }
 }

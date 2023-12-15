@@ -1,10 +1,9 @@
 package app;
 
-import app.view.CalculatorView;
+import app.controller.CalculatorController;
 
 public class Main {
     public static void main(String[] args) {
-        CalculatorView calculatorView = new CalculatorView();
-//        calculatorView.drawCalculator();
+        CalculatorController calculatorController = new CalculatorController();
     }
 }

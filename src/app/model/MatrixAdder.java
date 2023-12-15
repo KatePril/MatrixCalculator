@@ -7,11 +7,15 @@ public class MatrixAdder extends MatrixOperator{
         super(size);
     }
 
-    public void addMatrix(Matrix a, Matrix b) {
-        for (int i = 0; i < newMatrix.getSize(); i++) {
-            for (int j = 0; j < newMatrix.getSize(); j++) {
-                newMatrix.setElement(i, j, a.getElement(i, j) + b.getElement(i, j));
+    public int[][] addMatrix(int[][] a, int[][] b) {
+        int[][] newMatrix = new int[a.length][a[0].length];
+        for (int i = 0; i < a.length; i++) {
+            for (int j = 0; j < a[0].length; j++) {
+                newMatrix[i][j] = a[i][j] + b[i][j];
+//                newMatrix.setElement(i, j, a.getElement(i, j) + b.getElement(i, j));
             }
         }
+
+        return newMatrix;
     }
 }
