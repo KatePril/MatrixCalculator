@@ -16,6 +16,7 @@ public class CalculatorController {
 
         addMatrix();
         multiplyMatrix();
+        subtractMatrix();
     }
 
     private void addMatrix() {
@@ -55,5 +56,25 @@ public class CalculatorController {
             }
         });
     }
+
+    private void subtractMatrix() {
+        calculatorView.getSubtractionButton().addActionListener(l -> {
+            if (Validator.isArrayValid(calculatorView.getMatrixAFields())) {
+                if (Validator.isArrayValid(calculatorView.getMatrixBFields())) {
+                    calculatorView.clearLabel();
+
+                    int[][] matrixAValues = Converter.convertStringArrayToIntegerArray(calculatorView.getMatrixAFields());
+                    int[][] matrixBValues = Converter.convertStringArrayToIntegerArray(calculatorView.getMatrixBFields());
+
+                    calculatorView.setResultMatrixFields(calculatorModel.getMatrixSubtracter().subtractMatrix(matrixAValues, matrixBValues));
+                } else {
+                    calculatorView.setLabelText(Constants.INCORRECT_DATA_MSG);
+                }
+            } else {
+                calculatorView.setLabelText(Constants.INCORRECT_DATA_MSG);
+            }
+        });
+    }
+
 
 }
