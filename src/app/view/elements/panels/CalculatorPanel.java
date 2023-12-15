@@ -1,14 +1,18 @@
 package app.view.elements.panels;
 
+import app.utils.Constants;
+
 import javax.swing.*;
 
 public class CalculatorPanel extends JPanel{
     private JComboBox<Integer> sizeSelector;
     private CalculatorMatrixPanel panel;
+    private JLabel labelForWarnings;
 
     public CalculatorPanel() {
         createSizeSelector();
         createMatrixPanel();
+        createLabelForWarnings();
     }
 
     private void createSizeSelector() {
@@ -19,6 +23,19 @@ public class CalculatorPanel extends JPanel{
     private void createMatrixPanel() {
         panel = new CalculatorMatrixPanel();
         add(panel);
+    }
+
+    private void createLabelForWarnings() {
+        labelForWarnings = new JLabel();
+        add(labelForWarnings);
+    }
+
+    public void clearLabel() {
+        labelForWarnings.setText("");
+    }
+
+    public void setLabelText(String text) {
+        labelForWarnings.setText(text);
     }
 
     public JComboBox<Integer> getSizeSelector() {
@@ -35,5 +52,13 @@ public class CalculatorPanel extends JPanel{
 
     public void setPanel(CalculatorMatrixPanel panel) {
         this.panel = panel;
+    }
+
+    public JLabel getLabelForWarnings() {
+        return labelForWarnings;
+    }
+
+    public void setLabelForWarnings(JLabel labelForWarnings) {
+        this.labelForWarnings = labelForWarnings;
     }
 }

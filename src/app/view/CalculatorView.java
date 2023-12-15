@@ -56,4 +56,12 @@ public class CalculatorView {
         return frame.getPanel().getPanel().getResultMatrix().getMatrix().getButton();
     }
 
+    public void clearLabel() {
+        frame.getPanel().clearLabel();
+    }
+
+    public void setLabelText(String text) {
+        frame.getPanel().setLabelText(text);
+    }
+
 }
