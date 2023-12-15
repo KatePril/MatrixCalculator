@@ -16,15 +16,15 @@ public class CalculatorView {
     }
 
 
-    public int[][] getMatrixAFields() {
+    public String[][] getMatrixAFields() {
         return frame.getPanel().getPanel().getMatrixA().getMatrix().getMatrix().getValues();
     }
 
-    public int[][] getMatrixBFields() {
+    public String[][] getMatrixBFields() {
         return frame.getPanel().getPanel().getMatrixB().getMatrix().getMatrix().getValues();
     }
 
-    public int[][] getResultMatrixFields() {
+    public String[][] getResultMatrixFields() {
         return frame.getPanel().getPanel().getResultMatrix().getMatrix().getMatrix().getMatrix().getValues();
     }
 
