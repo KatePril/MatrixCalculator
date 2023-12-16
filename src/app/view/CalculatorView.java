@@ -10,11 +10,6 @@ public class CalculatorView {
 
     public CalculatorView() {
         frame = new CalculatorFrame("Calculator");
-//        frame.getPanel().getSizeSelector().addActionListener(l -> {
-//            frame.getPanel().getPanel().changeSize((Integer) frame.getPanel().getSizeSelector().getSelectedItem());
-//            System.out.println(frame.getPanel().getSizeSelector().getSelectedItem());
-//
-//        });
     }
 
     public CalculatorMatrixPanel getMatrixPanel() {
