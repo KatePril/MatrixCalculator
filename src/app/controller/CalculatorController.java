@@ -1,6 +1,5 @@
 package app.controller;
 
-import app.controller.functions.Predicate;
 import app.entity.VisualMatrix;
 import app.model.CalculatorModel;
 import app.utils.Constants;
