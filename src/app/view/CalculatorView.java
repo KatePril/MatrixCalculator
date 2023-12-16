@@ -1,4 +1,5 @@
 package app.view;
+import app.entity.VisualMatrix;
 import app.view.elements.CalculatorFrame;
 import app.view.elements.panels.CalculatorMatrixPanel;
 
@@ -9,11 +10,6 @@ public class CalculatorView {
 
     public CalculatorView() {
         frame = new CalculatorFrame("Calculator");
-//        frame.getPanel().getSizeSelector().addActionListener(l -> {
-//            frame.getPanel().getPanel().changeSize((Integer) frame.getPanel().getSizeSelector().getSelectedItem());
-//            System.out.println(frame.getPanel().getSizeSelector().getSelectedItem());
-//
-//        });
     }
 
     public CalculatorMatrixPanel getMatrixPanel() {
@@ -25,16 +21,16 @@ public class CalculatorView {
     }
 
 
-    public String[][] getMatrixAFields() {
-        return frame.getPanel().getPanel().getMatrixA().getMatrix().getMatrix().getValues();
+    public VisualMatrix getMatrixA() {
+        return frame.getPanel().getPanel().getMatrixA().getMatrix().getMatrix();
     }
 
     public void setMatrixAFields(int[][] fields) {
         frame.getPanel().getPanel().getMatrixA().getMatrix().getMatrix().fillFields(fields);
     }
 
-    public String[][] getMatrixBFields() {
-        return frame.getPanel().getPanel().getMatrixB().getMatrix().getMatrix().getValues();
+    public VisualMatrix getMatrixB() {
+        return frame.getPanel().getPanel().getMatrixB().getMatrix().getMatrix();
     }
 
     public void setMatrixBFields(int[][] fields) {
@@ -42,8 +38,8 @@ public class CalculatorView {
     }
 
 
-    public String[][] getResultMatrixFields() {
-        return frame.getPanel().getPanel().getResultMatrix().getMatrix().getMatrix().getMatrix().getValues();
+    public VisualMatrix getResultMatrix() {
+        return frame.getPanel().getPanel().getResultMatrix().getMatrix().getMatrix().getMatrix();
     }
 
     public void setResultMatrixFields(int[][] fields) {
