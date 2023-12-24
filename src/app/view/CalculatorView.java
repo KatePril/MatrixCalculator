@@ -70,6 +70,14 @@ public class CalculatorView {
         return frame.getPanel().getPanel().getResultMatrix().getMatrix().getButton();
     }
 
+    public JButton getPasteAButton() {
+        return frame.getPanel().getPastePanel().getPasteAButton();
+    }
+
+    public JButton getPasteBButton() {
+        return frame.getPanel().getPastePanel().getPasteBButton();
+    }
+
     public void clearLabel() {
         frame.getPanel().clearLabel();
     }
