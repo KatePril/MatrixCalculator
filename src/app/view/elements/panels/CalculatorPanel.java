@@ -7,11 +7,13 @@ import javax.swing.*;
 public class CalculatorPanel extends JPanel{
     private JComboBox<Integer> sizeSelector;
     private CalculatorMatrixPanel panel;
+    private PastePanel pastePanel;
     private JLabel labelForWarnings;
 
     public CalculatorPanel() {
         createSizeSelector();
         createMatrixPanel();
+        createPastePanel();
         createLabelForWarnings();
     }
 
@@ -23,6 +25,11 @@ public class CalculatorPanel extends JPanel{
     private void createMatrixPanel() {
         panel = new CalculatorMatrixPanel();
         add(panel);
+    }
+
+    private void createPastePanel() {
+        pastePanel = new PastePanel();
+        add(pastePanel);
     }
 
     private void createLabelForWarnings() {
@@ -52,6 +59,14 @@ public class CalculatorPanel extends JPanel{
 
     public void setPanel(CalculatorMatrixPanel panel) {
         this.panel = panel;
+    }
+
+    public PastePanel getPastePanel() {
+        return pastePanel;
+    }
+
+    public void setPastePanel(PastePanel pastePanel) {
+        this.pastePanel = pastePanel;
     }
 
     public JLabel getLabelForWarnings() {
