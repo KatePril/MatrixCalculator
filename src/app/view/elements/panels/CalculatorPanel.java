@@ -1,7 +1,5 @@
 package app.view.elements.panels;
 
-import app.utils.Constants;
-
 import javax.swing.*;
 
 public class CalculatorPanel extends JPanel{

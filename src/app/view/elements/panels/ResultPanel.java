@@ -1,7 +1,6 @@
 package app.view.elements.panels;
 
 import javax.swing.*;
-import java.awt.*;
 
 public class ResultPanel extends JPanel {
 

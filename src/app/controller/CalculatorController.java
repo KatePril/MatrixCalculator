@@ -2,7 +2,6 @@ package app.controller;
 
 import app.entity.VisualMatrix;
 import app.model.CalculatorModel;
-import app.model.MatrixAdder;
 import app.utils.Constants;
 import app.utils.Converter;
 import app.utils.Validator;
@@ -104,6 +103,7 @@ public class CalculatorController {
 
             } else {
                 calculatorView.setLabelText(Constants.INCORRECT_DATA_MSG);
+                System.out.println(Constants.INCORRECT_DATA_MSG);
             }
         });
 
@@ -112,12 +112,12 @@ public class CalculatorController {
     private void oneMatrixActionListener(String keyAction, String keyMatrix) {
         buttonHashMap.get(keyAction+keyMatrix).addActionListener(l -> {
             if (Validator.isArrayValid(matrixHashMap.get(keyMatrix).getValues())) {
-
                 calculatorView.clearLabel();
                 functionsHashMap.get(keyAction).accept(matrixHashMap.get(keyMatrix));
 
             } else {
                 calculatorView.setLabelText(Constants.INCORRECT_DATA_MSG);
+                System.out.println(Constants.INCORRECT_DATA_MSG);
             }
         });
     }
@@ -127,6 +127,7 @@ public class CalculatorController {
         calculatorView.getSizeSelector().addItemListener(l -> {
             calculatorView.getMatrixPanel().changeSize((Integer) calculatorView.getSizeSelector().getSelectedItem());
             calculatorView.getFrame().repaint();
+            calculatorView.clearLabel();
         });
     }
 

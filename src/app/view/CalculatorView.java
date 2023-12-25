@@ -1,4 +1,5 @@
 package app.view;
+
 import app.entity.VisualMatrix;
 import app.view.elements.CalculatorFrame;
 import app.view.elements.panels.CalculatorMatrixPanel;

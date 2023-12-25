@@ -1,7 +1,6 @@
 package app.view.elements.panels;
 
 import javax.swing.*;
-import java.awt.*;
 
 public class PastePanel extends JPanel {
     private JButton pasteAButton = new JButton("Paste result into A");
