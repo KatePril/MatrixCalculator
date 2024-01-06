@@ -2,18 +2,17 @@ package app.controller;
 
 import app.entity.VisualMatrix;
 import app.model.CalculatorModel;
-import app.utils.AppStarter;
 import app.utils.Constants;
 import app.utils.Converter;
 import app.utils.Validator;
 import app.view.CalculatorView;
+import app.view.elements.CalculatorFrame;
 
 import javax.swing.*;
 import java.util.HashMap;
 import java.util.function.Consumer;
 
 public class CalculatorController {
-    private AppStarter appStarter;
     private CalculatorView calculatorView;
     private CalculatorModel calculatorModel;
 
@@ -24,8 +23,7 @@ public class CalculatorController {
     private HashMap<String, JButton> buttonHashMap;
     private HashMap<String, Consumer<VisualMatrix>> functionsHashMap;
 
-    public CalculatorController(int size, AppStarter appStarter) {
-        this.appStarter = appStarter;
+    public CalculatorController(int size) {
 
         this.calculatorModel = new CalculatorModel();
         this.calculatorView = new CalculatorView(size);
@@ -47,8 +45,6 @@ public class CalculatorController {
 
         HashMapFiller<String, Consumer<VisualMatrix>> functionsHashMapFiller = new HashMapFiller<>();
         this.functionsHashMap = functionsHashMapFiller.fillNewHashMap(ACTION_KEYS, getFunctionsArray());
-
-        changeSize();
 
         twoMatrixActionListener(ACTION_KEYS[0]);
         twoMatrixActionListener(ACTION_KEYS[1]);
@@ -126,22 +122,11 @@ public class CalculatorController {
         });
     }
 
-    private void deleteFrame() {
-        if (calculatorView.getFrame() != null) {
-            calculatorView.getFrame().setVisible(false);
-            calculatorView.getFrame().dispose();
-        }
+    public JComboBox<Integer> getSizeSelector() {
+        return calculatorView.getSizeSelector();
     }
 
-    private void changeSize() {
-        calculatorView.getSizeSelector().addItemListener(l -> {
-//            calculatorView.getMatrixPanel().changeSize((Integer) calculatorView.getSizeSelector().getSelectedItem());
-//            calculatorView.getFrame().repaint();
-//            calculatorView.clearLabel();
-            deleteFrame();
-            appStarter.setCalculatorController((Integer) calculatorView.getSizeSelector().getSelectedItem(), appStarter);
-        });
+    public CalculatorFrame getCalculatorFrame() {
+        return calculatorView.getFrame();
     }
-
-
 }
