@@ -13,7 +13,7 @@ public class VisualMatrix {
         fields = new MatrixInput[size][size];
         for (int i = 0; i < size; i++) {
             for (int j = 0; j < size; j++) {
-                fields[i][j] = new MatrixInput(0, i, j);
+                fields[i][j] = new MatrixInput(0);
             }
         }
     }

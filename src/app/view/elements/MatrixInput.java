@@ -7,7 +7,7 @@ public class MatrixInput extends JTextField {
     private final int HEIGHT = 40;
     private final int WIDTH = 100;
 
-    public MatrixInput(int columns, int i, int j) {
+    public MatrixInput(int columns) {
         super(columns);
         setPreferredSize(new Dimension(WIDTH, HEIGHT));
         setMaximumSize(new Dimension(WIDTH, HEIGHT));
