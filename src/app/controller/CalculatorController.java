@@ -103,7 +103,6 @@ public class CalculatorController {
 
             } else {
                 calculatorView.setLabelText(Constants.INCORRECT_DATA_MSG);
-                System.out.println(Constants.INCORRECT_DATA_MSG);
             }
         });
 
@@ -117,7 +116,6 @@ public class CalculatorController {
 
             } else {
                 calculatorView.setLabelText(Constants.INCORRECT_DATA_MSG);
-                System.out.println(Constants.INCORRECT_DATA_MSG);
             }
         });
     }
