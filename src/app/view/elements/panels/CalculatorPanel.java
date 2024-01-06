@@ -8,20 +8,21 @@ public class CalculatorPanel extends JPanel{
     private PastePanel pastePanel;
     private JLabel labelForWarnings;
 
-    public CalculatorPanel() {
-        createSizeSelector();
-        createMatrixPanel();
+    public CalculatorPanel(int size) {
+        createSizeSelector(size);
+        createMatrixPanel(size);
         createPastePanel();
         createLabelForWarnings();
     }
 
-    private void createSizeSelector() {
+    private void createSizeSelector(int size) {
         sizeSelector = new JComboBox<>(new Integer[]{2, 3, 4, 5});
+        sizeSelector.setSelectedItem(size);
         add(sizeSelector);
     }
 
-    private void createMatrixPanel() {
-        panel = new CalculatorMatrixPanel();
+    private void createMatrixPanel(int size) {
+        panel = new CalculatorMatrixPanel(size);
         add(panel);
     }
 

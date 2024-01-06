@@ -14,11 +14,11 @@ public class CalculatorFrame extends JFrame {
 
     private CalculatorPanel panel;
 
-    public CalculatorFrame(String title){
+    public CalculatorFrame(String title, int size){
         super(title);
         setSize(WIDTH, HEIGHT);
         setLocation(X, Y);
-        panel = new CalculatorPanel();
+        panel = new CalculatorPanel(size);
         getContentPane().add(panel, BorderLayout.CENTER);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setVisible(true);

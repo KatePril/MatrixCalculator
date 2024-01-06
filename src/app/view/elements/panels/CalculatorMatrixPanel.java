@@ -3,14 +3,13 @@ package app.view.elements.panels;
 import javax.swing.*;
 
 public class CalculatorMatrixPanel extends JPanel {
-
     TranspositionPanel matrixA;
     TranspositionPanel matrixB;
     ActionButtonsPanel buttonsPanel;
     ResultPanel resultMatrix;
 
-    public CalculatorMatrixPanel() {
-        fillWithMatrix(2);
+    public CalculatorMatrixPanel(int size) {
+        fillWithMatrix(size);
     }
 
     private TranspositionPanel createTranspositionPanel(int size) {
@@ -35,12 +34,6 @@ public class CalculatorMatrixPanel extends JPanel {
         add(matrixB);
 
         createResultMatrix(size);
-    }
-
-    public void changeSize(int size) {
-        removeAll();
-        fillWithMatrix(size);
-        repaint();
     }
 
     public TranspositionPanel getMatrixA() {

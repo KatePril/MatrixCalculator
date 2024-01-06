@@ -6,6 +6,7 @@ import app.utils.Constants;
 import app.utils.Converter;
 import app.utils.Validator;
 import app.view.CalculatorView;
+import app.view.elements.CalculatorFrame;
 
 import javax.swing.*;
 import java.util.HashMap;
@@ -22,9 +23,10 @@ public class CalculatorController {
     private HashMap<String, JButton> buttonHashMap;
     private HashMap<String, Consumer<VisualMatrix>> functionsHashMap;
 
-    public CalculatorController() {
+    public CalculatorController(int size) {
+
         this.calculatorModel = new CalculatorModel();
-        this.calculatorView = new CalculatorView();
+        this.calculatorView = new CalculatorView(size);
 
         HashMapFiller<String, VisualMatrix> matrixHashMapFiller = new HashMapFiller<>();
         this.matrixHashMap = matrixHashMapFiller.fillNewHashMap(MATRIX_NAMES,
@@ -43,8 +45,6 @@ public class CalculatorController {
 
         HashMapFiller<String, Consumer<VisualMatrix>> functionsHashMapFiller = new HashMapFiller<>();
         this.functionsHashMap = functionsHashMapFiller.fillNewHashMap(ACTION_KEYS, getFunctionsArray());
-
-        changeSize();
 
         twoMatrixActionListener(ACTION_KEYS[0]);
         twoMatrixActionListener(ACTION_KEYS[1]);
@@ -122,14 +122,11 @@ public class CalculatorController {
         });
     }
 
-
-    private void changeSize() {
-        calculatorView.getSizeSelector().addItemListener(l -> {
-            calculatorView.getMatrixPanel().changeSize((Integer) calculatorView.getSizeSelector().getSelectedItem());
-            calculatorView.getFrame().repaint();
-            calculatorView.clearLabel();
-        });
+    public JComboBox<Integer> getSizeSelector() {
+        return calculatorView.getSizeSelector();
     }
 
-
+    public CalculatorFrame getCalculatorFrame() {
+        return calculatorView.getFrame();
+    }
 }

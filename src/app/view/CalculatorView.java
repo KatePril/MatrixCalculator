@@ -9,8 +9,8 @@ import javax.swing.*;
 public class CalculatorView {
     CalculatorFrame frame;
 
-    public CalculatorView() {
-        frame = new CalculatorFrame("Calculator");
+    public CalculatorView(int size) {
+        frame = new CalculatorFrame("Calculator", size);
     }
 
     public CalculatorMatrixPanel getMatrixPanel() {
