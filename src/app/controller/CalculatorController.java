@@ -2,6 +2,7 @@ package app.controller;
 
 import app.entity.VisualMatrix;
 import app.model.CalculatorModel;
+import app.utils.AppStarter;
 import app.utils.Constants;
 import app.utils.Converter;
 import app.utils.Validator;
@@ -12,6 +13,7 @@ import java.util.HashMap;
 import java.util.function.Consumer;
 
 public class CalculatorController {
+    private AppStarter appStarter;
     private CalculatorView calculatorView;
     private CalculatorModel calculatorModel;
 
@@ -22,9 +24,11 @@ public class CalculatorController {
     private HashMap<String, JButton> buttonHashMap;
     private HashMap<String, Consumer<VisualMatrix>> functionsHashMap;
 
-    public CalculatorController() {
+    public CalculatorController(int size, AppStarter appStarter) {
+        this.appStarter = appStarter;
+
         this.calculatorModel = new CalculatorModel();
-        this.calculatorView = new CalculatorView();
+        this.calculatorView = new CalculatorView(size);
 
         HashMapFiller<String, VisualMatrix> matrixHashMapFiller = new HashMapFiller<>();
         this.matrixHashMap = matrixHashMapFiller.fillNewHashMap(MATRIX_NAMES,
@@ -122,12 +126,20 @@ public class CalculatorController {
         });
     }
 
+    private void deleteFrame() {
+        if (calculatorView.getFrame() != null) {
+            calculatorView.getFrame().setVisible(false);
+            calculatorView.getFrame().dispose();
+        }
+    }
 
     private void changeSize() {
         calculatorView.getSizeSelector().addItemListener(l -> {
-            calculatorView.getMatrixPanel().changeSize((Integer) calculatorView.getSizeSelector().getSelectedItem());
-            calculatorView.getFrame().repaint();
-            calculatorView.clearLabel();
+//            calculatorView.getMatrixPanel().changeSize((Integer) calculatorView.getSizeSelector().getSelectedItem());
+//            calculatorView.getFrame().repaint();
+//            calculatorView.clearLabel();
+            deleteFrame();
+            appStarter.setCalculatorController((Integer) calculatorView.getSizeSelector().getSelectedItem(), appStarter);
         });
     }
 
