@@ -16,8 +16,8 @@ public class CalculatorFrame extends JFrame {
 
     public CalculatorFrame(String title, int size){
         super(title);
-        setSize(WIDTH, HEIGHT);
-        setLocation(X, Y);
+        setExtendedState(JFrame.MAXIMIZED_BOTH);
+
         panel = new CalculatorPanel(size);
         getContentPane().add(panel, BorderLayout.CENTER);
         setDefaultCloseOperation(EXIT_ON_CLOSE);

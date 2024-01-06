@@ -28,6 +28,8 @@ public class AppStarter {
         sizeSelector.addItemListener(l -> {
             deleteFrame();
             this.calculatorController = new CalculatorController((Integer) sizeSelector.getSelectedItem());
+            sizeSelector = calculatorController.getSizeSelector();
+            changeSize();
         });
     }
 }
