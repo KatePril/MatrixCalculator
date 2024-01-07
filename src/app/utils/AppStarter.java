@@ -2,19 +2,12 @@ package app.utils;
 
 import app.controller.CalculatorController;
 
-import javax.swing.*;
-
 public class AppStarter {
     private CalculatorController calculatorController;
-    private JComboBox<Integer> sizeSelector;
+
     public AppStarter() {
         calculatorController = new CalculatorController(2);
-        sizeSelector = calculatorController.getSizeSelector();
         changeSize();
-    }
-
-    public void setCalculatorController(int size) {
-        this.calculatorController = new CalculatorController(size);
     }
 
     private void deleteFrame() {
@@ -25,10 +18,9 @@ public class AppStarter {
     }
 
     private void changeSize() {
-        sizeSelector.addItemListener(l -> {
+        calculatorController.getSizeSelector().addItemListener(l -> {
             deleteFrame();
-            this.calculatorController = new CalculatorController((Integer) sizeSelector.getSelectedItem());
-            sizeSelector = calculatorController.getSizeSelector();
+            this.calculatorController = new CalculatorController((Integer) calculatorController.getSizeSelector().getSelectedItem());
             changeSize();
         });
     }
