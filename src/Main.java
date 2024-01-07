@@ -1,5 +1,3 @@
-package app;
-
 import app.controller.CalculatorController;
 import app.utils.AppStarter;
 
