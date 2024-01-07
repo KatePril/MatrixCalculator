@@ -22,8 +22,4 @@ public class CalculatorFrame extends JFrame {
     public CalculatorPanel getPanel() {
         return panel;
     }
-
-    public void setPanel(CalculatorPanel panel) {
-        this.panel = panel;
-    }
 }

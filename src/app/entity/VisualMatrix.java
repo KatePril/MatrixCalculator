@@ -51,16 +51,4 @@ public class VisualMatrix {
             }
         }
     }
-
-    public int getSize() {
-        return SIZE;
-    }
-
-    public MatrixInput[][] getFields() {
-        return fields;
-    }
-
-    public void setFields(MatrixInput[][] fields) {
-        this.fields = fields;
-    }
 }

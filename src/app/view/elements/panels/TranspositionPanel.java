@@ -21,15 +21,7 @@ public class TranspositionPanel extends JPanel {
         return button;
     }
 
-    public void setButton(JButton button) {
-        this.button = button;
-    }
-
     public MatrixPanel getMatrix() {
         return matrix;
-    }
-
-    public void setMatrix(MatrixPanel matrix) {
-        this.matrix = matrix;
     }
 }

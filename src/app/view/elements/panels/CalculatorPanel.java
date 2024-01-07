@@ -48,31 +48,11 @@ public class CalculatorPanel extends JPanel{
         return sizeSelector;
     }
 
-    public void setSizeSelector(JComboBox<Integer> sizeSelector) {
-        this.sizeSelector = sizeSelector;
-    }
-
     public CalculatorMatrixPanel getPanel() {
         return panel;
     }
 
-    public void setPanel(CalculatorMatrixPanel panel) {
-        this.panel = panel;
-    }
-
     public PastePanel getPastePanel() {
         return pastePanel;
-    }
-
-    public void setPastePanel(PastePanel pastePanel) {
-        this.pastePanel = pastePanel;
-    }
-
-    public JLabel getLabelForWarnings() {
-        return labelForWarnings;
-    }
-
-    public void setLabelForWarnings(JLabel labelForWarnings) {
-        this.labelForWarnings = labelForWarnings;
     }
 }
