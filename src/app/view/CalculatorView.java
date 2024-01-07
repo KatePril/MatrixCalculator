@@ -13,38 +13,20 @@ public class CalculatorView {
         frame = new CalculatorFrame("Calculator", size);
     }
 
-    public CalculatorMatrixPanel getMatrixPanel() {
-        return frame.getPanel().getPanel();
-    }
-
     public JComboBox<Integer> getSizeSelector() {
         return frame.getPanel().getSizeSelector();
     }
 
-
     public VisualMatrix getMatrixA() {
         return frame.getPanel().getPanel().getMatrixA().getMatrix().getMatrix();
-    }
-
-    public void setMatrixAFields(int[][] fields) {
-        frame.getPanel().getPanel().getMatrixA().getMatrix().getMatrix().fillFields(fields);
     }
 
     public VisualMatrix getMatrixB() {
         return frame.getPanel().getPanel().getMatrixB().getMatrix().getMatrix();
     }
 
-    public void setMatrixBFields(int[][] fields) {
-        frame.getPanel().getPanel().getMatrixB().getMatrix().getMatrix().fillFields(fields);
-    }
-
-
     public VisualMatrix getResultMatrix() {
         return frame.getPanel().getPanel().getResultMatrix().getMatrix().getMatrix().getMatrix();
-    }
-
-    public void setResultMatrixFields(int[][] fields) {
-        frame.getPanel().getPanel().getResultMatrix().getMatrix().getMatrix().getMatrix().fillFields(fields);
     }
 
     public JButton getAdditionButton() {

@@ -24,15 +24,25 @@ public class CalculatorController {
     private HashMap<String, Consumer<VisualMatrix>> functionsHashMap;
 
     public CalculatorController(int size) {
-
         this.calculatorModel = new CalculatorModel();
         this.calculatorView = new CalculatorView(size);
 
+        fillMatrixHashMap();
+        fillButtonHashMap();
+        fillFunctionsHashMap();
+
+        addActionListeners();
+    }
+
+    private void fillMatrixHashMap() {
         HashMapFiller<String, VisualMatrix> matrixHashMapFiller = new HashMapFiller<>();
         this.matrixHashMap = matrixHashMapFiller.fillNewHashMap(MATRIX_NAMES,
                 new VisualMatrix[]{calculatorView.getMatrixA(), calculatorView.getMatrixB(), calculatorView.getResultMatrix()});
+    }
 
+    private void fillButtonHashMap() {
         HashMapFiller<String, JButton> buttonHashMapFiller = new HashMapFiller<>();
+
         String[] buttonKeys = {ACTION_KEYS[0], ACTION_KEYS[1], ACTION_KEYS[2],
                 ACTION_KEYS[3]+MATRIX_NAMES[0], ACTION_KEYS[3]+MATRIX_NAMES[1], ACTION_KEYS[3]+MATRIX_NAMES[2],
                 ACTION_KEYS[4]+MATRIX_NAMES[0], ACTION_KEYS[4]+MATRIX_NAMES[1]};
@@ -42,10 +52,14 @@ public class CalculatorController {
                 calculatorView.getPasteAButton(), calculatorView.getPasteBButton()};
 
         this.buttonHashMap = buttonHashMapFiller.fillNewHashMap(buttonKeys, buttons);
+    }
 
+    private void fillFunctionsHashMap() {
         HashMapFiller<String, Consumer<VisualMatrix>> functionsHashMapFiller = new HashMapFiller<>();
         this.functionsHashMap = functionsHashMapFiller.fillNewHashMap(ACTION_KEYS, getFunctionsArray());
+    }
 
+    private void addActionListeners() {
         twoMatrixActionListener(ACTION_KEYS[0]);
         twoMatrixActionListener(ACTION_KEYS[1]);
         twoMatrixActionListener(ACTION_KEYS[2]);

@@ -15,10 +15,4 @@ public class ResultPanel extends JPanel {
     public TranspositionPanel getMatrix() {
         return matrix;
     }
-
-    public void setMatrix(TranspositionPanel matrix) {
-        this.matrix = matrix;
-    }
-
-
 }

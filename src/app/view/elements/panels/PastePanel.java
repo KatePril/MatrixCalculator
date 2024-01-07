@@ -15,15 +15,7 @@ public class PastePanel extends JPanel {
         return pasteAButton;
     }
 
-    public void setPasteAButton(JButton pasteA) {
-        this.pasteAButton = pasteA;
-    }
-
     public JButton getPasteBButton() {
         return pasteBButton;
-    }
-
-    public void setPasteBButton(JButton pasteB) {
-        this.pasteBButton = pasteB;
     }
 }

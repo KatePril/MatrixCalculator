@@ -40,31 +40,15 @@ public class CalculatorMatrixPanel extends JPanel {
         return matrixA;
     }
 
-    public void setMatrixA(TranspositionPanel matrixA) {
-        this.matrixA = matrixA;
-    }
-
     public TranspositionPanel getMatrixB() {
         return matrixB;
-    }
-
-    public void setMatrixB(TranspositionPanel matrixB) {
-        this.matrixB = matrixB;
     }
 
     public ActionButtonsPanel getButtonsPanel() {
         return buttonsPanel;
     }
 
-    public void setButtonsPanel(ActionButtonsPanel buttonsPanel) {
-        this.buttonsPanel = buttonsPanel;
-    }
-
     public ResultPanel getResultMatrix() {
         return resultMatrix;
-    }
-
-    public void setResultMatrix(ResultPanel resultMatrix) {
-        this.resultMatrix = resultMatrix;
     }
 }

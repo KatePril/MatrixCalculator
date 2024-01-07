@@ -27,10 +27,6 @@ public class MatrixPanel extends JPanel {
         return matrix;
     }
 
-    public void setMatrix(VisualMatrix matrix) {
-        this.matrix = matrix;
-    }
-
     @Override
     public int getWidth() {
         return width;
