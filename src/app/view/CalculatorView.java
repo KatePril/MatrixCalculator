@@ -12,6 +12,18 @@ public class CalculatorView {
         frame = new CalculatorFrame("Calculator", size);
     }
 
+    public void clearLabel() {
+        frame.getPanel().clearLabel();
+    }
+
+    public void setLabelText(String text) {
+        frame.getPanel().setLabelText(text);
+    }
+
+    public CalculatorFrame getFrame() {
+        return frame;
+    }
+
     public JComboBox<Integer> getSizeSelector() {
         return frame.getPanel().getSizeSelector();
     }
@@ -52,23 +64,11 @@ public class CalculatorView {
         return frame.getPanel().getPanel().getResultMatrix().getMatrix().getButton();
     }
 
-    public JButton getPasteAButton() {
+    public JButton getPasteMatrixAButton() {
         return frame.getPanel().getPastePanel().getPasteMatrixAButton();
     }
 
-    public JButton getPasteBButton() {
+    public JButton getPasteMatrixBButton() {
         return frame.getPanel().getPastePanel().getPasteMatrixBButton();
-    }
-
-    public void clearLabel() {
-        frame.getPanel().clearLabel();
-    }
-
-    public void setLabelText(String text) {
-        frame.getPanel().setLabelText(text);
-    }
-
-    public CalculatorFrame getFrame() {
-        return frame;
     }
 }

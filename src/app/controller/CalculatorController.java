@@ -52,7 +52,7 @@ public class CalculatorController {
         JButton[] buttons = {calculatorView.getAdditionButton(), calculatorView.getMultiplicationButton(),
                 calculatorView.getSubtractionButton(), calculatorView.getMatrixATranspositionButton(),
                 calculatorView.getMatrixBTranspositionButton(), calculatorView.getResultMatrixTranspositionButton(),
-                calculatorView.getPasteAButton(), calculatorView.getPasteBButton()};
+                calculatorView.getPasteMatrixAButton(), calculatorView.getPasteMatrixBButton()};
 
         this.buttonsHashMap = buttonHashMapFiller.fillNewHashMap(buttonKeys, buttons);
     }
