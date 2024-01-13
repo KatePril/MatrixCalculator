@@ -16,7 +16,7 @@ public class CalculatorPanel extends JPanel{
     }
 
     private void createSizeSelector(int size) {
-        sizeSelector = new JComboBox<>(new Integer[]{1, 2, 3, 4, 5});
+        sizeSelector = new JComboBox<>(new Integer[]{2, 3, 4, 5});
         sizeSelector.setSelectedItem(size);
         add(sizeSelector);
     }
