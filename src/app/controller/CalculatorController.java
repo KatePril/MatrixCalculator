@@ -17,11 +17,11 @@ public class CalculatorController {
     private final CalculatorView calculatorView;
     private final CalculatorModel calculatorModel;
 
-    private final String[] MATRIX_NAMES = {"MatrixA", "MatrixB", "ResultMatrix"};
+    private final String[] MATRICES_NAMES = {"MatrixA", "MatrixB", "ResultMatrix"};
     private final String[] ACTION_KEYS = {"Add", "Multiply", "Subtract", "Transpose", "Paste"};
 
-    private HashMap<String, VisualMatrix> matrixHashMap;
-    private HashMap<String, JButton> buttonHashMap;
+    private HashMap<String, VisualMatrix> matricesHashMap;
+    private HashMap<String, JButton> buttonsHashMap;
     private HashMap<String, Consumer<VisualMatrix>> functionsHashMap;
 
     public CalculatorController(int size) {
@@ -37,7 +37,7 @@ public class CalculatorController {
 
     private void fillMatrixHashMap() {
         HashMapFiller<String, VisualMatrix> matrixHashMapFiller = new HashMapFiller<>();
-        this.matrixHashMap = matrixHashMapFiller.fillNewHashMap(MATRIX_NAMES,
+        this.matricesHashMap = matrixHashMapFiller.fillNewHashMap(MATRICES_NAMES,
                 new VisualMatrix[]{calculatorView.getMatrixA(),
                         calculatorView.getMatrixB(), calculatorView.getResultMatrix()});
     }
@@ -46,15 +46,15 @@ public class CalculatorController {
         HashMapFiller<String, JButton> buttonHashMapFiller = new HashMapFiller<>();
 
         String[] buttonKeys = {ACTION_KEYS[0], ACTION_KEYS[1], ACTION_KEYS[2],
-                ACTION_KEYS[3]+MATRIX_NAMES[0], ACTION_KEYS[3]+MATRIX_NAMES[1], ACTION_KEYS[3]+MATRIX_NAMES[2],
-                ACTION_KEYS[4]+MATRIX_NAMES[0], ACTION_KEYS[4]+MATRIX_NAMES[1]};
+                ACTION_KEYS[3]+ MATRICES_NAMES[0], ACTION_KEYS[3]+ MATRICES_NAMES[1], ACTION_KEYS[3]+ MATRICES_NAMES[2],
+                ACTION_KEYS[4]+ MATRICES_NAMES[0], ACTION_KEYS[4]+ MATRICES_NAMES[1]};
 
         JButton[] buttons = {calculatorView.getAdditionButton(), calculatorView.getMultiplicationButton(),
                 calculatorView.getSubtractionButton(), calculatorView.getMatrixATranspositionButton(),
                 calculatorView.getMatrixBTranspositionButton(), calculatorView.getResultMatrixTranspositionButton(),
                 calculatorView.getPasteAButton(), calculatorView.getPasteBButton()};
 
-        this.buttonHashMap = buttonHashMapFiller.fillNewHashMap(buttonKeys, buttons);
+        this.buttonsHashMap = buttonHashMapFiller.fillNewHashMap(buttonKeys, buttons);
     }
 
     private void fillFunctionsHashMap() {
@@ -63,16 +63,16 @@ public class CalculatorController {
     }
 
     private void addActionListeners() {
-        addActionListenerForTwoMatrix(ACTION_KEYS[0]);
-        addActionListenerForTwoMatrix(ACTION_KEYS[1]);
-        addActionListenerForTwoMatrix(ACTION_KEYS[2]);
+        addActionListenerForTwoMatrices(ACTION_KEYS[0]);
+        addActionListenerForTwoMatrices(ACTION_KEYS[1]);
+        addActionListenerForTwoMatrices(ACTION_KEYS[2]);
 
-        addActionListenerForOneMatrix(ACTION_KEYS[3], MATRIX_NAMES[0]);
-        addActionListenerForOneMatrix(ACTION_KEYS[3], MATRIX_NAMES[1]);
-        addActionListenerForOneMatrix(ACTION_KEYS[3], MATRIX_NAMES[2]);
+        addActionListenerForOneMatrix(ACTION_KEYS[3], MATRICES_NAMES[0]);
+        addActionListenerForOneMatrix(ACTION_KEYS[3], MATRICES_NAMES[1]);
+        addActionListenerForOneMatrix(ACTION_KEYS[3], MATRICES_NAMES[2]);
 
-        addActionListenerForOneMatrix(ACTION_KEYS[4], MATRIX_NAMES[0]);
-        addActionListenerForOneMatrix(ACTION_KEYS[4], MATRIX_NAMES[1]);
+        addActionListenerForOneMatrix(ACTION_KEYS[4], MATRICES_NAMES[0]);
+        addActionListenerForOneMatrix(ACTION_KEYS[4], MATRICES_NAMES[1]);
     }
 
     private Consumer<VisualMatrix>[] getFunctionsArray() {
@@ -80,22 +80,22 @@ public class CalculatorController {
 
         functions[0] = (result) -> {
             int[][] matrix = calculatorModel.getMatrixAdder()
-                    .addMatrix(Converter.convertStringArrayToIntArray(matrixHashMap.get(MATRIX_NAMES[0]).getValues()),
-                            Converter.convertStringArrayToIntArray(matrixHashMap.get(MATRIX_NAMES[1]).getValues()));
+                    .addMatrix(Converter.convertStringArrayToIntArray(matricesHashMap.get(MATRICES_NAMES[0]).getValues()),
+                            Converter.convertStringArrayToIntArray(matricesHashMap.get(MATRICES_NAMES[1]).getValues()));
             result.fillFields(matrix);
         };
 
         functions[1] = (result) -> {
             int[][] matrix = calculatorModel.getMatrixMultiplier()
-                    .multiplyMatrix(Converter.convertStringArrayToIntArray(matrixHashMap.get(MATRIX_NAMES[0]).getValues()),
-                            Converter.convertStringArrayToIntArray(matrixHashMap.get(MATRIX_NAMES[1]).getValues()));
+                    .multiplyMatrix(Converter.convertStringArrayToIntArray(matricesHashMap.get(MATRICES_NAMES[0]).getValues()),
+                            Converter.convertStringArrayToIntArray(matricesHashMap.get(MATRICES_NAMES[1]).getValues()));
             result.fillFields(matrix);
         };
 
         functions[2] = (result) -> {
             int[][] matrix = calculatorModel.getMatrixSubtracter()
-                    .subtractMatrix(Converter.convertStringArrayToIntArray(matrixHashMap.get(MATRIX_NAMES[0]).getValues()),
-                            Converter.convertStringArrayToIntArray(matrixHashMap.get(MATRIX_NAMES[1]).getValues()));
+                    .subtractMatrix(Converter.convertStringArrayToIntArray(matricesHashMap.get(MATRICES_NAMES[0]).getValues()),
+                            Converter.convertStringArrayToIntArray(matricesHashMap.get(MATRICES_NAMES[1]).getValues()));
             result.fillFields(matrix);
         };
 
@@ -105,19 +105,19 @@ public class CalculatorController {
         };
 
         functions[4]= (matrix) -> {
-            matrix.fillFields(Converter.convertStringArrayToIntArray(matrixHashMap.get(MATRIX_NAMES[2]).getValues()));
+            matrix.fillFields(Converter.convertStringArrayToIntArray(matricesHashMap.get(MATRICES_NAMES[2]).getValues()));
         };
 
         return functions;
     }
 
-    private void addActionListenerForTwoMatrix(String key) {
-        buttonHashMap.get(key).addActionListener(l -> {
-            if (Validator.isArrayValid(matrixHashMap.get(MATRIX_NAMES[0]).getValues()) &&
-                    Validator.isArrayValid(matrixHashMap.get(MATRIX_NAMES[1]).getValues())) {
+    private void addActionListenerForTwoMatrices(String key) {
+        buttonsHashMap.get(key).addActionListener(l -> {
+            if (Validator.isArrayValid(matricesHashMap.get(MATRICES_NAMES[0]).getValues()) &&
+                    Validator.isArrayValid(matricesHashMap.get(MATRICES_NAMES[1]).getValues())) {
 
                 calculatorView.clearLabel();
-                functionsHashMap.get(key).accept(matrixHashMap.get(MATRIX_NAMES[2]));
+                functionsHashMap.get(key).accept(matricesHashMap.get(MATRICES_NAMES[2]));
 
             } else {
                 calculatorView.setLabelText(StringConstants.INCORRECT_DATA_MSG);
@@ -127,10 +127,10 @@ public class CalculatorController {
     }
 
     private void addActionListenerForOneMatrix(String keyAction, String keyMatrix) {
-        buttonHashMap.get(keyAction+keyMatrix).addActionListener(l -> {
-            if (Validator.isArrayValid(matrixHashMap.get(keyMatrix).getValues())) {
+        buttonsHashMap.get(keyAction+keyMatrix).addActionListener(l -> {
+            if (Validator.isArrayValid(matricesHashMap.get(keyMatrix).getValues())) {
                 calculatorView.clearLabel();
-                functionsHashMap.get(keyAction).accept(matrixHashMap.get(keyMatrix));
+                functionsHashMap.get(keyAction).accept(matricesHashMap.get(keyMatrix));
 
             } else {
                 calculatorView.setLabelText(StringConstants.INCORRECT_DATA_MSG);
