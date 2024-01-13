@@ -7,8 +7,7 @@ import javax.swing.*;
 import java.awt.*;
 
 public class MatrixPanel extends JPanel {
-    private static final int INPUT_WIDTH = MatrixInput.getWIDTH();
-    private static final int INPUT_HEIGHT = MatrixInput.getHEIGHT();
+    private static final int SPACE_SIZE = 10;
 
     private final int PANEL_WIDTH;
     private final int PANEL_HEIGHT;
@@ -16,8 +15,9 @@ public class MatrixPanel extends JPanel {
     private VisualMatrix matrix;
 
     public MatrixPanel(int size) {
-        PANEL_WIDTH = INPUT_WIDTH * size + (size - 1) * 10;
-        PANEL_HEIGHT = INPUT_HEIGHT * size + (size - 1) * 10;
+        int numberOfSpaces = size - 1;
+        PANEL_WIDTH = MatrixInput.getWIDTH() * size + numberOfSpaces * SPACE_SIZE;
+        PANEL_HEIGHT = MatrixInput.getHEIGHT() * size + numberOfSpaces * SPACE_SIZE;
         setPreferredSize(new Dimension(PANEL_WIDTH, PANEL_HEIGHT));
 
         matrix = new VisualMatrix(size);

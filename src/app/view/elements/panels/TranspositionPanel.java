@@ -10,8 +10,8 @@ public class TranspositionPanel extends JPanel {
     public TranspositionPanel(int size) {
         matrix = new MatrixPanel(size);
 
-        button.setPreferredSize(new Dimension(matrix.getWidth(), 40));
-        setPreferredSize(new Dimension(matrix.getWidth(), matrix.getHeight() + button.getHeight() + 20));
+        button.setPreferredSize(new Dimension(matrix.getWidth() - 10, 40));
+        setPreferredSize(new Dimension(matrix.getWidth(), matrix.getHeight() + button.getHeight() + 50));
 
         add(matrix);
         add(button);
