@@ -46,8 +46,8 @@ public class CalculatorController {
         HashMapFiller<String, JButton> buttonHashMapFiller = new HashMapFiller<>();
 
         String[] buttonKeys = {ACTION_KEYS[0], ACTION_KEYS[1], ACTION_KEYS[2],
-                ACTION_KEYS[3]+ MATRICES_NAMES[0], ACTION_KEYS[3]+ MATRICES_NAMES[1], ACTION_KEYS[3]+ MATRICES_NAMES[2],
-                ACTION_KEYS[4]+ MATRICES_NAMES[0], ACTION_KEYS[4]+ MATRICES_NAMES[1]};
+                ACTION_KEYS[3] + MATRICES_NAMES[0], ACTION_KEYS[3] + MATRICES_NAMES[1], ACTION_KEYS[3] + MATRICES_NAMES[2],
+                ACTION_KEYS[4] + MATRICES_NAMES[0], ACTION_KEYS[4] + MATRICES_NAMES[1]};
 
         JButton[] buttons = {calculatorView.getAdditionButton(), calculatorView.getMultiplicationButton(),
                 calculatorView.getSubtractionButton(), calculatorView.getMatrixATranspositionButton(),
