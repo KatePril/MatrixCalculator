@@ -2,10 +2,10 @@ package app.model;
 
 public class CalculatorModel {
 
-    private MatrixAdder matrixAdder;
-    private MatrixMultiplier matrixMultiplier;
-    private MatrixSubtracter matrixSubtracter;
-    private MatrixTransposer matrixTransposer;
+    private final MatrixAdder matrixAdder;
+    private final MatrixMultiplier matrixMultiplier;
+    private final MatrixSubtracter matrixSubtracter;
+    private final MatrixTransposer matrixTransposer;
 
     public CalculatorModel() {
         this.matrixAdder = new MatrixAdder();

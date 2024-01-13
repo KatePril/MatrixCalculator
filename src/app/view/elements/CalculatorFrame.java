@@ -7,7 +7,7 @@ import java.awt.*;
 
 public class CalculatorFrame extends JFrame {
 
-    private CalculatorPanel panel;
+    private final CalculatorPanel panel;
 
     public CalculatorFrame(String title, int size){
         super(title);

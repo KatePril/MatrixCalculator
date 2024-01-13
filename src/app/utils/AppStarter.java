@@ -20,7 +20,8 @@ public class AppStarter {
     private void changeSize() {
         calculatorController.getSizeSelector().addItemListener(l -> {
             deleteFrame();
-            this.calculatorController = new CalculatorController((Integer) calculatorController.getSizeSelector().getSelectedItem());
+            this.calculatorController =
+                    new CalculatorController((Integer) calculatorController.getSizeSelector().getSelectedItem());
             changeSize();
         });
     }

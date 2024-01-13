@@ -1,23 +1,24 @@
 package app.view.elements.panels;
 
 import app.entity.VisualMatrix;
+import app.view.elements.MatrixInput;
 
 import javax.swing.*;
 import java.awt.*;
 
 public class MatrixPanel extends JPanel {
-    private final int INPUT_WIDTH = 100;
-    private final int INPUT_HEIGHT = 40;
+    private static final int INPUT_WIDTH = MatrixInput.getWIDTH();
+    private static final int INPUT_HEIGHT = MatrixInput.getHEIGHT();
 
-    private int width;
-    private int height;
+    private final int PANEL_WIDTH;
+    private final int PANEL_HEIGHT;
 
     private VisualMatrix matrix;
 
     public MatrixPanel(int size) {
-        width = INPUT_WIDTH * size + (size - 1) * 10;
-        height = INPUT_HEIGHT * size + (size - 1) * 10;
-        setPreferredSize(new Dimension(width, height));
+        PANEL_WIDTH = INPUT_WIDTH * size + (size - 1) * 10;
+        PANEL_HEIGHT = INPUT_HEIGHT * size + (size - 1) * 10;
+        setPreferredSize(new Dimension(PANEL_WIDTH, PANEL_HEIGHT));
 
         matrix = new VisualMatrix(size);
         matrix.drawMatrix(this);
@@ -29,11 +30,11 @@ public class MatrixPanel extends JPanel {
 
     @Override
     public int getWidth() {
-        return width;
+        return PANEL_WIDTH;
     }
 
     @Override
     public int getHeight() {
-        return height;
+        return PANEL_HEIGHT;
     }
 }

@@ -4,7 +4,7 @@ import javax.swing.*;
 import java.awt.*;
 
 public class TranspositionPanel extends JPanel {
-    private JButton button = new JButton("Transpose");
+    private final JButton button = new JButton("Transpose");
     private MatrixPanel matrix;
 
     public TranspositionPanel(int size) {
