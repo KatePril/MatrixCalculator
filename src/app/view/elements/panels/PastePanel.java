@@ -3,19 +3,19 @@ package app.view.elements.panels;
 import javax.swing.*;
 
 public class PastePanel extends JPanel {
-    private JButton pasteAButton = new JButton("Paste result into A");
-    private JButton pasteBButton = new JButton("Paste result into B");
+    private final JButton pasteMatrixAButton = new JButton("Paste result into A");
+    private final JButton pasteMatrixBButton = new JButton("Paste result into B");
 
     public PastePanel() {;
-        add(pasteAButton);
-        add(pasteBButton);
+        add(pasteMatrixAButton);
+        add(pasteMatrixBButton);
     }
 
-    public JButton getPasteAButton() {
-        return pasteAButton;
+    public JButton getPasteMatrixAButton() {
+        return pasteMatrixAButton;
     }
 
-    public JButton getPasteBButton() {
-        return pasteBButton;
+    public JButton getPasteMatrixBButton() {
+        return pasteMatrixBButton;
     }
 }

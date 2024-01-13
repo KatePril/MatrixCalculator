@@ -6,8 +6,7 @@ public class ResultPanel extends JPanel {
     private TranspositionPanel matrix;
 
     public ResultPanel(int size) {
-        JLabel label = new JLabel("=");
-        add(label);
+        add(new JLabel("="));
         matrix = new TranspositionPanel(size);
         add(matrix);
     }

@@ -25,11 +25,7 @@ public class VisualMatrix {
                 if (fields[i][j].getText().trim().isEmpty()) {
                     values[i][j] = "0";
                 } else {
-                    try {
-                        values[i][j] = fields[i][j].getText();
-                    } catch (NumberFormatException e) {
-                        throw new RuntimeException();
-                    }
+                    values[i][j] = fields[i][j].getText();
                 }
             }
         }

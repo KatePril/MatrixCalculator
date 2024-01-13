@@ -63,16 +63,16 @@ public class CalculatorController {
     }
 
     private void addActionListeners() {
-        twoMatrixActionListener(ACTION_KEYS[0]);
-        twoMatrixActionListener(ACTION_KEYS[1]);
-        twoMatrixActionListener(ACTION_KEYS[2]);
+        addActionListenerForTwoMatrix(ACTION_KEYS[0]);
+        addActionListenerForTwoMatrix(ACTION_KEYS[1]);
+        addActionListenerForTwoMatrix(ACTION_KEYS[2]);
 
-        oneMatrixActionListener(ACTION_KEYS[3], MATRIX_NAMES[0]);
-        oneMatrixActionListener(ACTION_KEYS[3], MATRIX_NAMES[1]);
-        oneMatrixActionListener(ACTION_KEYS[3], MATRIX_NAMES[2]);
+        addActionListenerForOneMatrix(ACTION_KEYS[3], MATRIX_NAMES[0]);
+        addActionListenerForOneMatrix(ACTION_KEYS[3], MATRIX_NAMES[1]);
+        addActionListenerForOneMatrix(ACTION_KEYS[3], MATRIX_NAMES[2]);
 
-        oneMatrixActionListener(ACTION_KEYS[4], MATRIX_NAMES[0]);
-        oneMatrixActionListener(ACTION_KEYS[4], MATRIX_NAMES[1]);
+        addActionListenerForOneMatrix(ACTION_KEYS[4], MATRIX_NAMES[0]);
+        addActionListenerForOneMatrix(ACTION_KEYS[4], MATRIX_NAMES[1]);
     }
 
     private Consumer<VisualMatrix>[] getFunctionsArray() {
@@ -111,7 +111,7 @@ public class CalculatorController {
         return functions;
     }
 
-    private void twoMatrixActionListener(String key) {
+    private void addActionListenerForTwoMatrix(String key) {
         buttonHashMap.get(key).addActionListener(l -> {
             if (Validator.isArrayValid(matrixHashMap.get(MATRIX_NAMES[0]).getValues()) &&
                     Validator.isArrayValid(matrixHashMap.get(MATRIX_NAMES[1]).getValues())) {
@@ -126,7 +126,7 @@ public class CalculatorController {
 
     }
 
-    private void oneMatrixActionListener(String keyAction, String keyMatrix) {
+    private void addActionListenerForOneMatrix(String keyAction, String keyMatrix) {
         buttonHashMap.get(keyAction+keyMatrix).addActionListener(l -> {
             if (Validator.isArrayValid(matrixHashMap.get(keyMatrix).getValues())) {
                 calculatorView.clearLabel();

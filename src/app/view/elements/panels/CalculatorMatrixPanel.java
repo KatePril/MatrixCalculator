@@ -9,7 +9,7 @@ public class CalculatorMatrixPanel extends JPanel {
     ResultPanel resultMatrix;
 
     public CalculatorMatrixPanel(int size) {
-        fillWithMatrix(size);
+        fillPanel(size);
     }
 
     private TranspositionPanel createTranspositionPanel(int size) {
@@ -26,7 +26,7 @@ public class CalculatorMatrixPanel extends JPanel {
         add(resultMatrix);
     }
 
-    private void fillWithMatrix(int size) {
+    private void fillPanel(int size) {
         matrixA = createTranspositionPanel(size);
         add(matrixA);
         createButtonsPanel();

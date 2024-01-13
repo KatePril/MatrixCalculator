@@ -53,11 +53,11 @@ public class CalculatorView {
     }
 
     public JButton getPasteAButton() {
-        return frame.getPanel().getPastePanel().getPasteAButton();
+        return frame.getPanel().getPastePanel().getPasteMatrixAButton();
     }
 
     public JButton getPasteBButton() {
-        return frame.getPanel().getPastePanel().getPasteBButton();
+        return frame.getPanel().getPastePanel().getPasteMatrixBButton();
     }
 
     public void clearLabel() {
