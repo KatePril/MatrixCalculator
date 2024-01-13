@@ -79,34 +79,28 @@ public class CalculatorController {
         Consumer<VisualMatrix>[] functions = new Consumer[5];
 
         functions[0] = (result) -> {
-            int[][] matrix = calculatorModel.getMatrixAdder()
-                    .addMatrix(Converter.convertStringArrayToIntArray(matricesHashMap.get(MATRICES_NAMES[0]).getValues()),
+            int[][] matrix = calculatorModel.addMatrices(Converter.convertStringArrayToIntArray(matricesHashMap.get(MATRICES_NAMES[0]).getValues()),
                             Converter.convertStringArrayToIntArray(matricesHashMap.get(MATRICES_NAMES[1]).getValues()));
             result.fillFields(matrix);
         };
 
         functions[1] = (result) -> {
-            int[][] matrix = calculatorModel.getMatrixMultiplier()
-                    .multiplyMatrix(Converter.convertStringArrayToIntArray(matricesHashMap.get(MATRICES_NAMES[0]).getValues()),
+            int[][] matrix = calculatorModel.multiplyMatrices(Converter.convertStringArrayToIntArray(matricesHashMap.get(MATRICES_NAMES[0]).getValues()),
                             Converter.convertStringArrayToIntArray(matricesHashMap.get(MATRICES_NAMES[1]).getValues()));
             result.fillFields(matrix);
         };
 
         functions[2] = (result) -> {
-            int[][] matrix = calculatorModel.getMatrixSubtracter()
-                    .subtractMatrix(Converter.convertStringArrayToIntArray(matricesHashMap.get(MATRICES_NAMES[0]).getValues()),
+            int[][] matrix = calculatorModel.subtractMatrices(Converter.convertStringArrayToIntArray(matricesHashMap.get(MATRICES_NAMES[0]).getValues()),
                             Converter.convertStringArrayToIntArray(matricesHashMap.get(MATRICES_NAMES[1]).getValues()));
             result.fillFields(matrix);
         };
 
-        functions[3] = (matrix) -> {
-            matrix.fillFields(calculatorModel.getMatrixTransposer().transposeMatrix(
+        functions[3] = (matrix) -> matrix.fillFields(calculatorModel.transposeMatrix(
                     Converter.convertStringArrayToIntArray(matrix.getValues())));
-        };
 
-        functions[4]= (matrix) -> {
-            matrix.fillFields(Converter.convertStringArrayToIntArray(matricesHashMap.get(MATRICES_NAMES[2]).getValues()));
-        };
+        functions[4]= (matrix) -> matrix.fillFields(
+                Converter.convertStringArrayToIntArray(matricesHashMap.get(MATRICES_NAMES[2]).getValues()));
 
         return functions;
     }

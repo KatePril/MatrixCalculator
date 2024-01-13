@@ -2,31 +2,19 @@ package app.model;
 
 public class CalculatorModel {
 
-    private final MatrixAdder matrixAdder;
-    private final MatrixMultiplier matrixMultiplier;
-    private final MatrixSubtracter matrixSubtracter;
-    private final MatrixTransposer matrixTransposer;
-
-    public CalculatorModel() {
-        this.matrixAdder = new MatrixAdder();
-        this.matrixMultiplier = new MatrixMultiplier();
-        this.matrixSubtracter = new MatrixSubtracter();
-        this.matrixTransposer = new MatrixTransposer();
+    public int[][] addMatrices(int[][] a, int[][] b) {
+        return MatrixAdder.addMatrices(a, b);
     }
 
-    public MatrixAdder getMatrixAdder() {
-        return matrixAdder;
+    public int[][] multiplyMatrices(int[][] a, int[][] b) {
+        return MatrixMultiplier.multiplyMatrices(a, b);
     }
 
-    public MatrixMultiplier getMatrixMultiplier() {
-        return matrixMultiplier;
+    public int[][] subtractMatrices(int[][] a, int[][] b) {
+        return MatrixSubtracter.subtractMatrices(a, b);
     }
 
-    public MatrixSubtracter getMatrixSubtracter() {
-        return matrixSubtracter;
-    }
-
-    public MatrixTransposer getMatrixTransposer() {
-        return matrixTransposer;
+    public int[][] transposeMatrix(int[][] a) {
+        return MatrixTransposer.transposeMatrix(a);
     }
 }

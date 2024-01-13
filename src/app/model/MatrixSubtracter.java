@@ -1,8 +1,8 @@
 package app.model;
 
-public class MatrixSubtracter {
+public final class MatrixSubtracter {
 
-    public int[][] subtractMatrix(int[][] a, int[][] b) {
+    public static int[][] subtractMatrices(int[][] a, int[][] b) {
         int[][] newMatrix = new int[a.length][a.length];
         for (int i = 0; i < a.length; i++) {
             for (int j = 0; j < a[0].length; j++) {

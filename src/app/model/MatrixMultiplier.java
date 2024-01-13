@@ -1,8 +1,8 @@
 package app.model;
 
-public class MatrixMultiplier {
+public final class MatrixMultiplier {
 
-    public int[][] multiplyMatrix(int[][] a, int[][] b) {
+    public static int[][] multiplyMatrices(int[][] a, int[][] b) {
         int[][] newMatrix = new int[a.length][a[0].length];
         for (int i = 0; i < newMatrix.length; i++) {
             for (int j = 0; j < newMatrix.length; j++) {
