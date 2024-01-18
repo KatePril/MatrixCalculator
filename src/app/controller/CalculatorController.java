@@ -1,5 +1,6 @@
 package app.controller;
 
+import app.controller.utils.HashMapsGenerator;
 import app.controller.utils.KeysArrayListGenerator;
 import app.controller.utils.ValuesArrayListGenerator;
 import app.entity.VisualMatrix;
@@ -21,47 +22,21 @@ public class CalculatorController {
     private final CalculatorView calculatorView;
     private final CalculatorModel calculatorModel;
 
-    private HashMap<String, VisualMatrix> matricesHashMap;
-    private HashMap<String, JButton> buttonsHashMap;
-    private HashMap<String, Consumer<VisualMatrix>> functionsHashMap;
+    private final HashMap<String, VisualMatrix> matricesHashMap;
+    private final HashMap<String, JButton> buttonsHashMap;
+    private final HashMap<String, Consumer<VisualMatrix>> functionsHashMap;
 
     public CalculatorController(int size) {
         this.calculatorModel = new CalculatorModel();
         this.calculatorView = new CalculatorView(size);
 
-        fillMatrixHashMap();
-        fillButtonHashMap();
-        fillFunctionsHashMap();
+        this.matricesHashMap = HashMapsGenerator.getMatricesHashMap(calculatorView);
+        this.buttonsHashMap = HashMapsGenerator.getButtonsHashMap(calculatorView);
+        this.functionsHashMap = HashMapsGenerator.getFunctionsHashMap(calculatorModel, matricesHashMap);
 
         addActionListeners();
     }
 
-    private void fillMatrixHashMap() {
-        HashMapFiller<String, VisualMatrix> matrixHashMapFiller = new HashMapFiller<>();
-
-        ArrayList<String> matricesKeys = KeysArrayListGenerator.getMatricesKeys();
-        ArrayList<VisualMatrix> matrices = ValuesArrayListGenerator.getMatricesValues(calculatorView);
-
-        this.matricesHashMap = matrixHashMapFiller.fillNewHashMap(matricesKeys, matrices);
-    }
-
-    private void fillButtonHashMap() {
-        HashMapFiller<String, JButton> buttonHashMapFiller = new HashMapFiller<>();
-
-        ArrayList<String> buttonsKeys = KeysArrayListGenerator.getButtonsKeys();
-        ArrayList<JButton> buttons = ValuesArrayListGenerator.getButtonsValues(calculatorView);
-
-        this.buttonsHashMap = buttonHashMapFiller.fillNewHashMap(buttonsKeys, buttons);
-    }
-
-    private void fillFunctionsHashMap() {
-        HashMapFiller<String, Consumer<VisualMatrix>> functionsHashMapFiller = new HashMapFiller<>();
-
-        ArrayList<String> actionsKeys = KeysArrayListGenerator.getActionsKeys();
-        ArrayList<Consumer<VisualMatrix>> functions = ValuesArrayListGenerator.getFunctionsValues(calculatorModel, matricesHashMap);
-
-        this.functionsHashMap = functionsHashMapFiller.fillNewHashMap(actionsKeys, functions);
-    }
 
     private void addActionListeners() {
         addActionListenerForTwoMatrices(Actions.ADD.name());
