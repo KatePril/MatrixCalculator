@@ -5,7 +5,7 @@ import java.awt.*;
 
 public class MatrixInput extends JTextField {
     private static final int HEIGHT = 40;
-    private static final int WIDTH = 100;
+    private static final int WIDTH = 60;
 
     public MatrixInput(int columns) {
         super(columns);
