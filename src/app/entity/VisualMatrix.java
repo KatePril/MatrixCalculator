@@ -12,8 +12,10 @@ public class VisualMatrix {
         this.SIZE = size;
         fields = new MatrixInput[size][size];
         for (int i = 0; i < size; i++) {
+            MatrixInput[] row = fields[i];
+
             for (int j = 0; j < size; j++) {
-                fields[i][j] = new MatrixInput(0);
+                row[j] = new MatrixInput(0);
             }
         }
     }
@@ -21,11 +23,14 @@ public class VisualMatrix {
     public String[][] getValues() {
         String[][] values = new String[SIZE][SIZE];
         for (int i = 0; i < SIZE; i++) {
+            MatrixInput[] fieldsRow = fields[i];
+            String[] valuesRow = values[i];
+
             for (int j = 0; j < SIZE; j++) {
-                if (fields[i][j].getText().trim().isEmpty()) {
-                    values[i][j] = "0";
+                if (fieldsRow[j].getText().trim().isEmpty()) {
+                    valuesRow[j] = "0";
                 } else {
-                    values[i][j] = fields[i][j].getText();
+                    valuesRow[j] = fieldsRow[j].getText();
                 }
             }
         }
@@ -34,16 +39,21 @@ public class VisualMatrix {
 
     public void fillFields(int[][] values) {
         for (int i = 0; i < SIZE; i++) {
+            MatrixInput[] row = fields[i];
+            int[] valuesRow = values[i];
+
             for (int j = 0; j < SIZE; j++) {
-                fields[i][j].setText(Integer.toString(values[i][j]));
+                row[j].setText(Integer.toString(valuesRow[j]));
             }
         }
     }
 
     public void drawMatrix(JPanel panel) {
         for (int i = 0; i < SIZE; i++) {
+            MatrixInput[] row = fields[i];
+
             for (int j = 0; j < SIZE; j++) {
-                panel.add(fields[i][j]);
+                panel.add(row[j]);
             }
         }
     }
