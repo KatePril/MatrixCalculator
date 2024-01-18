@@ -52,11 +52,14 @@ public class CalculatorController {
     }
 
 
+    private boolean isMatrixValid(String key) {
+        return Validator.isArrayValid(matricesHashMap.get(key).getValues());
+    }
+
 
     private void addActionListenerForTwoMatrices(String key) {
         buttonsHashMap.get(key).addActionListener(l -> {
-            if (Validator.isArrayValid(matricesHashMap.get(Matrices.MATRIX_A.name()).getValues()) &&
-                    Validator.isArrayValid(matricesHashMap.get(Matrices.MATRIX_B.name()).getValues())) {
+            if (isMatrixValid(Matrices.MATRIX_A.name()) && isMatrixValid(Matrices.MATRIX_B.name())) {
 
                 calculatorView.clearLabel();
                 functionsHashMap.get(key).accept(matricesHashMap.get(Matrices.RESULT_MATRIX.name()));
@@ -68,9 +71,10 @@ public class CalculatorController {
 
     }
 
+
     private void addActionListenerForOneMatrix(String keyAction, String keyMatrix) {
         buttonsHashMap.get(keyAction + "_" + keyMatrix).addActionListener(l -> {
-            if (Validator.isArrayValid(matricesHashMap.get(keyMatrix).getValues())) {
+            if (isMatrixValid(keyMatrix)) {
                 calculatorView.clearLabel();
                 functionsHashMap.get(keyAction).accept(matricesHashMap.get(keyMatrix));
 
@@ -79,6 +83,7 @@ public class CalculatorController {
             }
         });
     }
+
 
     public JComboBox<Integer> getSizeSelector() {
         return calculatorView.getSizeSelector();
