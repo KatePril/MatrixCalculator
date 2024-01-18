@@ -26,6 +26,7 @@ public class CalculatorController {
     private final HashMap<String, JButton> buttonsHashMap;
     private final HashMap<String, Consumer<VisualMatrix>> functionsHashMap;
 
+
     public CalculatorController(int size) {
         this.calculatorModel = new CalculatorModel();
         this.calculatorView = new CalculatorView(size);
@@ -51,11 +52,9 @@ public class CalculatorController {
         addActionListenerForOneMatrix(Actions.PASTE.name(), Matrices.MATRIX_B.name());
     }
 
-
     private boolean isMatrixValid(String key) {
         return Validator.isArrayValid(matricesHashMap.get(key).getValues());
     }
-
 
     private void addActionListenerForTwoMatrices(String key) {
         buttonsHashMap.get(key).addActionListener(l -> {
@@ -70,7 +69,6 @@ public class CalculatorController {
         });
 
     }
-
 
     private void addActionListenerForOneMatrix(String keyAction, String keyMatrix) {
         buttonsHashMap.get(keyAction + "_" + keyMatrix).addActionListener(l -> {
