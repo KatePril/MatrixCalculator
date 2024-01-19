@@ -1,19 +1,25 @@
 package app.model;
 
+import app.iterators.ElementSetterIterator;
+import app.iterators.ElementSetterRowIterator;
+import app.iterators.RowIterator;
+
+import java.util.Iterator;
+
 public final class MatrixSubtracter {
 
     public static Integer[][] subtractMatrices(Integer[][] a, Integer[][] b) {
         Integer[][] newMatrix = new Integer[a.length][a.length];
 
-        for (int i = 0; i < a.length; i++) {
-            Integer[] rowA = a[i];
-            Integer[] rowB = b[i];
-            Integer[] rowNewMatrix = newMatrix[i];
+        ElementSetterIterator<Integer> newMatrixIterator = new ElementSetterRowIterator<>(newMatrix);
+        Iterator<Integer> aIterator = new RowIterator<>(a);
+        Iterator<Integer> bIterator = new RowIterator<>(b);
 
-            for (int j = 0; j < a[0].length; j++) {
-                rowNewMatrix[j] = rowA[j] - rowB[j];
-            }
+        while (newMatrixIterator.hasNext()) {
+            Integer value = aIterator.next() - bIterator.next();
+            newMatrixIterator.setNext(value);
         }
+
         return newMatrix;
     }
 }

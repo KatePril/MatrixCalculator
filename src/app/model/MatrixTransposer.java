@@ -1,16 +1,21 @@
 package app.model;
 
+import app.iterators.ElementSetterIterator;
+import app.iterators.ElementSetterReverseRowIterator;
+import app.iterators.RowIterator;
+
+import java.util.Iterator;
+
 public final class MatrixTransposer {
 
     public static Integer[][] transposeMatrix(Integer[][] a) {
         Integer[][] newMatrix = new Integer[a.length][a.length];
 
-        for (int i = 0; i < a.length; i++) {
-            Integer[] rowA = a[i];
+        ElementSetterIterator<Integer> newMatrixIterator = new ElementSetterReverseRowIterator<>(newMatrix);
+        Iterator<Integer> aIterator = new RowIterator<>(a);
 
-            for (int j = 0; j < a.length; j++) {
-                newMatrix[j][i] = rowA[j];
-            }
+        while (newMatrixIterator.hasNext()) {
+            newMatrixIterator.setNext(aIterator.next());
         }
 
         return newMatrix;
