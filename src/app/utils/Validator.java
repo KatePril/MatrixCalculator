@@ -1,5 +1,9 @@
 package app.utils;
 
+import app.iterators.RowIterator;
+
+import java.util.Iterator;
+
 public final class Validator {
 
     private static boolean isInputValid(String input) {
@@ -7,11 +11,11 @@ public final class Validator {
     }
 
     public static boolean isArrayValid(String[][] values) {
-        for (String[] row : values) {
-            for (String element : row) {
-                if (!isInputValid(element)) {
-                    return false;
-                }
+        Iterator<String> iterator = new RowIterator<>(values);
+
+        while (iterator.hasNext()) {
+            if (!isInputValid(iterator.next())) {
+                return false;
             }
         }
 
