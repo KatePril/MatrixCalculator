@@ -1,14 +1,22 @@
 package app.utils;
 
+import app.iterators.ElementSetterIterator;
+import app.iterators.ElementSetterRowIterator;
+import app.iterators.RowIterator;
+
+import java.util.Iterator;
+
 public final class Converter {
 
-    public static int[][] convertStringArrayToIntArray(String[][] strArray) {
-        int[][] intArray = new int[strArray.length][strArray[0].length];
+    public static Integer[][] convertStringArrayToIntArray(String[][] strArray) {
+        Integer[][] intArray = new Integer[strArray.length][strArray[0].length];
 
-        for (int i = 0; i < strArray.length; i++) {
-            for (int j = 0; j < strArray[0].length; j++) {
-                intArray[i][j] = Integer.parseInt(strArray[i][j]);
-            }
+        ElementSetterIterator<Integer> intArrayIterator = new ElementSetterRowIterator<>(intArray);
+        Iterator<String> strArrayIterator = new RowIterator<>(strArray);
+
+        while (intArrayIterator.hasNext()) {
+            Integer value = Integer.parseInt(strArrayIterator.next());
+            intArrayIterator.setNext(value);
         }
 
         return intArray;

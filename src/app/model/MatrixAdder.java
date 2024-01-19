@@ -1,13 +1,23 @@
 package app.model;
 
+import app.iterators.ElementSetterIterator;
+import app.iterators.ElementSetterRowIterator;
+import app.iterators.RowIterator;
+
+import java.util.Iterator;
+
 public final class MatrixAdder {
 
-    public static int[][] addMatrices(int[][] a, int[][] b) {
-        int[][] newMatrix = new int[a.length][a[0].length];
-        for (int i = 0; i < a.length; i++) {
-            for (int j = 0; j < a[0].length; j++) {
-                newMatrix[i][j] = a[i][j] + b[i][j];
-            }
+    public static Integer[][] addMatrices(Integer[][] a, Integer[][] b) {
+        Integer[][] newMatrix = new Integer[a.length][a[0].length];
+
+        ElementSetterIterator<Integer> newMatrixIterator = new ElementSetterRowIterator<>(newMatrix);
+        Iterator<Integer> aIterator = new RowIterator<>(a);
+        Iterator<Integer> bIterator = new RowIterator<>(b);
+
+        while (newMatrixIterator.hasNext()) {
+            Integer value = aIterator.next() + bIterator.next();
+            newMatrixIterator.setNext(value);
         }
 
         return newMatrix;

@@ -18,8 +18,8 @@ public class SizeController {
     private void changeSize() {
         calculatorController.getSizeSelector().addItemListener(l -> {
             deleteFrame();
-            this.calculatorController =
-                    new CalculatorController((Integer) calculatorController.getSizeSelector().getSelectedItem());
+            int selectorValue = (Integer) calculatorController.getSizeSelector().getSelectedItem();
+            this.calculatorController = new CalculatorController(selectorValue);
             changeSize();
         });
     }

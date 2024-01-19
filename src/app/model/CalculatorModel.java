@@ -2,19 +2,19 @@ package app.model;
 
 public class CalculatorModel {
 
-    public int[][] addMatrices(int[][] a, int[][] b) {
+    public Integer[][] addMatrices(Integer[][] a, Integer[][] b) {
         return MatrixAdder.addMatrices(a, b);
     }
 
-    public int[][] multiplyMatrices(int[][] a, int[][] b) {
+    public Integer[][] multiplyMatrices(Integer[][] a, Integer[][] b) {
         return MatrixMultiplier.multiplyMatrices(a, b);
     }
 
-    public int[][] subtractMatrices(int[][] a, int[][] b) {
+    public Integer[][] subtractMatrices(Integer[][] a, Integer[][] b) {
         return MatrixSubtracter.subtractMatrices(a, b);
     }
 
-    public int[][] transposeMatrix(int[][] a) {
+    public Integer[][] transposeMatrix(Integer[][] a) {
         return MatrixTransposer.transposeMatrix(a);
     }
 }

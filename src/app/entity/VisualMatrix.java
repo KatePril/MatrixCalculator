@@ -1,8 +1,12 @@
 package app.entity;
 
+import app.iterators.ElementSetterIterator;
+import app.iterators.ElementSetterRowIterator;
+import app.iterators.RowIterator;
 import app.view.elements.MatrixInput;
 
 import javax.swing.*;
+import java.util.Iterator;
 
 public class VisualMatrix {
     private final int SIZE;
@@ -11,40 +15,45 @@ public class VisualMatrix {
     public VisualMatrix(int size) {
         this.SIZE = size;
         fields = new MatrixInput[size][size];
-        for (int i = 0; i < size; i++) {
-            for (int j = 0; j < size; j++) {
-                fields[i][j] = new MatrixInput(0);
-            }
+        ElementSetterIterator<MatrixInput> iterator = new ElementSetterRowIterator<>(fields);
+
+        while(iterator.hasNext()) {
+            iterator.setNext(new MatrixInput(0));
         }
     }
 
     public String[][] getValues() {
         String[][] values = new String[SIZE][SIZE];
-        for (int i = 0; i < SIZE; i++) {
-            for (int j = 0; j < SIZE; j++) {
-                if (fields[i][j].getText().trim().isEmpty()) {
-                    values[i][j] = "0";
-                } else {
-                    values[i][j] = fields[i][j].getText();
-                }
+        Iterator<MatrixInput> fieldsIterator = new RowIterator<>(fields);
+        ElementSetterIterator<String> valuesIterator = new ElementSetterRowIterator<>(values);
+
+        while (fieldsIterator.hasNext()) {
+            String value = fieldsIterator.next().getText();
+            if (value.trim().isEmpty()) {
+                valuesIterator.setNext("0");
+            } else {
+                valuesIterator.setNext(value);
             }
         }
+
         return values;
     }
 
-    public void fillFields(int[][] values) {
-        for (int i = 0; i < SIZE; i++) {
-            for (int j = 0; j < SIZE; j++) {
-                fields[i][j].setText(Integer.toString(values[i][j]));
-            }
+    public void fillFields(Integer[][] values) {
+        Iterator<Integer> valuesIterator = new RowIterator<>(values);
+        Iterator<MatrixInput> fieldsIterator = new RowIterator<>(fields);
+
+        while (valuesIterator.hasNext()) {
+            String value = Integer.toString(valuesIterator.next());
+            fieldsIterator.next().setText(value);
         }
     }
 
     public void drawMatrix(JPanel panel) {
-        for (int i = 0; i < SIZE; i++) {
-            for (int j = 0; j < SIZE; j++) {
-                panel.add(fields[i][j]);
-            }
+        Iterator<MatrixInput> fieldsIterator = new RowIterator<>(fields);
+
+        while (fieldsIterator.hasNext()) {
+            panel.add(fieldsIterator.next());
         }
     }
 }
