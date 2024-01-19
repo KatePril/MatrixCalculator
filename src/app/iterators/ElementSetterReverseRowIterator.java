@@ -1,6 +1,6 @@
 package app.iterators;
 
-public class ElementSetterReverseRowIterator<E>{
+public class ElementSetterReverseRowIterator<E> implements ElementSetterIterator<E>{
     private E[][] matrix;
 
     private int currentElement = 0;
@@ -12,10 +12,12 @@ public class ElementSetterReverseRowIterator<E>{
         this.MAX_ELEMENT = matrix.length * matrix[0].length;
     }
 
+    @Override
     public boolean hasNext() {
         return currentElement < MAX_ELEMENT;
     }
 
+    @Override
     public void setNext(E value) {
         int columnIndex = currentElement / matrix.length;
         int rowIndex = currentElement - (matrix.length * columnIndex);
