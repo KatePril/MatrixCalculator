@@ -43,49 +43,49 @@ public final class ValuesArrayListGenerator {
 
         functions.add((result) -> {
                 String[][] matrixAValues = matrices.get(Matrices.MATRIX_A.name()).getValues();
-                int[][] matrixAIntValues = Converter.convertStringArrayToIntArray(matrixAValues);
+                Integer[][] matrixAIntValues = Converter.convertStringArrayToIntArray(matrixAValues);
 
                 String[][] matrixBValues = matrices.get(Matrices.MATRIX_B.name()).getValues();
-                int[][] matrixBIntValues = Converter.convertStringArrayToIntArray(matrixBValues);
+                Integer[][] matrixBIntValues = Converter.convertStringArrayToIntArray(matrixBValues);
 
-                int[][] matrix = model.addMatrices(matrixAIntValues, matrixBIntValues);
+                Integer[][] matrix = model.addMatrices(matrixAIntValues, matrixBIntValues);
                 result.fillFields(matrix);
             }
         );
 
         functions.add((result) -> {
                 String[][] matrixAValues = matrices.get(Matrices.MATRIX_A.name()).getValues();
-                int[][] matrixAIntValues = Converter.convertStringArrayToIntArray(matrixAValues);
+                Integer[][] matrixAIntValues = Converter.convertStringArrayToIntArray(matrixAValues);
 
                 String[][] matrixBValues = matrices.get(Matrices.MATRIX_B.name()).getValues();
-                int[][] matrixBIntValues = Converter.convertStringArrayToIntArray(matrixBValues);
+                Integer[][] matrixBIntValues = Converter.convertStringArrayToIntArray(matrixBValues);
 
-                int[][] matrix = model.multiplyMatrices(matrixAIntValues, matrixBIntValues);
+                Integer[][] matrix = model.multiplyMatrices(matrixAIntValues, matrixBIntValues);
                 result.fillFields(matrix);
             }
         );
 
         functions.add((result) -> {
                 String[][] matrixAValues = matrices.get(Matrices.MATRIX_A.name()).getValues();
-                int[][] matrixAIntValues = Converter.convertStringArrayToIntArray(matrixAValues);
+                Integer[][] matrixAIntValues = Converter.convertStringArrayToIntArray(matrixAValues);
 
                 String[][] matrixBValues = matrices.get(Matrices.MATRIX_B.name()).getValues();
-                int[][] matrixBIntValues = Converter.convertStringArrayToIntArray(matrixBValues);
+                Integer[][] matrixBIntValues = Converter.convertStringArrayToIntArray(matrixBValues);
 
-                int[][] matrix = model.subtractMatrices(matrixAIntValues, matrixBIntValues);
+                Integer[][] matrix = model.subtractMatrices(matrixAIntValues, matrixBIntValues);
                 result.fillFields(matrix);
             }
         );
 
         functions.add((matrix) -> {
-                int[][] matrixValues = Converter.convertStringArrayToIntArray(matrix.getValues());
+                Integer[][] matrixValues = Converter.convertStringArrayToIntArray(matrix.getValues());
                 matrix.fillFields(model.transposeMatrix(matrixValues));
             }
         );
 
         functions.add((matrix) -> {
                 String[][] matrixValues = matrices.get(Matrices.RESULT_MATRIX.name()).getValues();
-                int[][] matrixIntValues = Converter.convertStringArrayToIntArray(matrixValues);
+                Integer[][] matrixIntValues = Converter.convertStringArrayToIntArray(matrixValues);
 
                 matrix.fillFields(matrixIntValues);
             }

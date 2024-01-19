@@ -2,11 +2,12 @@ package app.model;
 
 public final class MatrixMultiplier {
 
-    public static int[][] multiplyMatrices(int[][] a, int[][] b) {
-        int[][] newMatrix = new int[a.length][a[0].length];
+    public static Integer[][] multiplyMatrices(Integer[][] a, Integer[][] b) {
+        Integer[][] newMatrix = new Integer[a.length][a[0].length];
+
         for (int i = 0; i < newMatrix.length; i++) {
-            int[] rowA = a[i];
-            int[] rowNewMatrix = newMatrix[i];
+            Integer[] rowA = a[i];
+            Integer[] rowNewMatrix = newMatrix[i];
 
             for (int j = 0; j < newMatrix.length; j++) {
                 int tmp = 0;
