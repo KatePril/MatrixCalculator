@@ -128,7 +128,7 @@ public final class ValuesArrayListGenerator {
                 Integer[][] matrixValues = Converter.convertStringArrayToIntArray(matrix.getValues());
                 Integer scalar = Integer.parseInt(input);
 
-                Integer[][] newMatrix = MatrixScalarMultiplier.multiplyMatrix(matrixValues, scalar);
+                Integer[][] newMatrix = model.scalarMultiplyMatrices(matrixValues, scalar);
 
                 matrix.fillFields(newMatrix);
             }
@@ -138,7 +138,7 @@ public final class ValuesArrayListGenerator {
                 Integer[][] matrixValues = Converter.convertStringArrayToIntArray(matrix.getValues());
                 Integer scalar = Integer.parseInt(input);
 
-                Integer[][] newMatrix = MatrixPowerer.powerMatrix(matrixValues, scalar);
+                Integer[][] newMatrix = model.powerMatrices(matrixValues, scalar);
 
                 matrix.fillFields(newMatrix);
             }
