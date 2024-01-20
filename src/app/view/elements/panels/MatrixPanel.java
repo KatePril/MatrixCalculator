@@ -1,7 +1,7 @@
 package app.view.elements.panels;
 
 import app.entity.VisualMatrix;
-import app.view.elements.MatrixInput;
+import app.view.elements.inputs.MatrixElementInput;
 
 import javax.swing.*;
 import java.awt.*;
@@ -16,8 +16,8 @@ public class MatrixPanel extends JPanel {
 
     public MatrixPanel(int size) {
         int numberOfSpaces = size - 1;
-        PANEL_WIDTH = MatrixInput.getWIDTH() * size + numberOfSpaces * SPACE_SIZE;
-        PANEL_HEIGHT = MatrixInput.getHEIGHT() * size + numberOfSpaces * SPACE_SIZE;
+        PANEL_WIDTH = MatrixElementInput.getWIDTH() * size + numberOfSpaces * SPACE_SIZE;
+        PANEL_HEIGHT = MatrixElementInput.getHEIGHT() * size + numberOfSpaces * SPACE_SIZE;
         setPreferredSize(new Dimension(PANEL_WIDTH, PANEL_HEIGHT));
 
         matrix = new VisualMatrix(size);
