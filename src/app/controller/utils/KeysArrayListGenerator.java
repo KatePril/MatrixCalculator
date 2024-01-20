@@ -23,9 +23,13 @@ public final class KeysArrayListGenerator {
         buttonsKeys.add(Actions.ADD.name());
         buttonsKeys.add(Actions.MULTIPLY.name());
         buttonsKeys.add(Actions.SUBTRACT.name());
+
         buttonsKeys.add(Actions.TRANSPOSE.name() + "_" + Matrices.MATRIX_A.name());
         buttonsKeys.add(Actions.TRANSPOSE.name() + "_" + Matrices.MATRIX_B.name());
         buttonsKeys.add(Actions.TRANSPOSE.name() + "_" + Matrices.RESULT_MATRIX.name());
+
+        fillArrays(buttonsKeys);
+
         buttonsKeys.add(Actions.PASTE.name() + "_" + Matrices.MATRIX_A.name());
         buttonsKeys.add(Actions.PASTE.name() + "_" + Matrices.MATRIX_B.name());
 
@@ -42,6 +46,33 @@ public final class KeysArrayListGenerator {
         actionsKeys.add(Actions.PASTE.name());
 
         return actionsKeys;
+    }
+
+    public static ArrayList<String> getBiActionsKeys() {
+        ArrayList<String> actionsKeys = new ArrayList<>();
+
+        actionsKeys.add(Actions.SCALAR_MULTIPLY.name());
+        actionsKeys.add(Actions.POWER.name());
+
+        return actionsKeys;
+    }
+
+    public static ArrayList<String> getInputKeys() {
+        ArrayList<String> inputsKeys = new ArrayList<>();
+
+        fillArrays(inputsKeys);
+
+        return inputsKeys;
+    }
+
+    private static void fillArrays(ArrayList<String> array) {
+        array.add(Actions.SCALAR_MULTIPLY.name() + "_" + Matrices.MATRIX_A.name());
+        array.add(Actions.SCALAR_MULTIPLY.name() + "_" + Matrices.MATRIX_B.name());
+        array.add(Actions.SCALAR_MULTIPLY.name() + "_" + Matrices.RESULT_MATRIX.name());
+
+        array.add(Actions.POWER.name() + "_" + Matrices.MATRIX_A.name());
+        array.add(Actions.POWER.name() + "_" + Matrices.MATRIX_B.name());
+        array.add(Actions.POWER.name() + "_" + Matrices.RESULT_MATRIX.name());
     }
 
 

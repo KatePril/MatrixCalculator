@@ -6,7 +6,7 @@ import java.util.Iterator;
 
 public final class Validator {
 
-    private static boolean isInputValid(String input) {
+    public static boolean isInputValid(String input) {
         return input.matches(StringConstants.VALIDATION_REGEX);
     }
 

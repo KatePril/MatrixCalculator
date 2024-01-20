@@ -8,6 +8,7 @@ import app.view.CalculatorView;
 import javax.swing.*;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.function.BiConsumer;
 import java.util.function.Consumer;
 
 public final class HashMapsGenerator {
@@ -34,6 +35,17 @@ public final class HashMapsGenerator {
         return output;
     }
 
+    public static HashMap<String, JTextField> getInputsHashMap(CalculatorView view) {
+        HashMapFiller<String, JTextField> inputsHashMapFiller = new HashMapFiller<>();
+
+        ArrayList<String> inputsKeys = KeysArrayListGenerator.getInputKeys();
+        ArrayList<JTextField> inputs = ValuesArrayListGenerator.getInputsValues(view);
+
+        HashMap<String, JTextField> output = inputsHashMapFiller.fillNewHashMap(inputsKeys, inputs);
+
+        return output;
+    }
+
     public static HashMap<String, Consumer<VisualMatrix>> getFunctionsHashMap(CalculatorModel model, HashMap<String, VisualMatrix> matrices) {
         HashMapFiller<String, Consumer<VisualMatrix>> functionsHashMapFiller = new HashMapFiller<>();
 
@@ -41,6 +53,17 @@ public final class HashMapsGenerator {
         ArrayList<Consumer<VisualMatrix>> functions = ValuesArrayListGenerator.getFunctionsValues(model, matrices);
 
         HashMap<String, Consumer<VisualMatrix>> output = functionsHashMapFiller.fillNewHashMap(actionsKeys, functions);
+
+        return output;
+    }
+
+    public static HashMap<String, BiConsumer<VisualMatrix, String>> getBiFunctionsHashMap(CalculatorModel model, HashMap<String, VisualMatrix> matrices) {
+        HashMapFiller<String, BiConsumer<VisualMatrix, String>> biFunctionsHashMapFiller = new HashMapFiller<>();
+
+        ArrayList<String> biActionsKeys = KeysArrayListGenerator.getBiActionsKeys();
+        ArrayList<BiConsumer<VisualMatrix, String>> biFunctions = ValuesArrayListGenerator.getBiFunctionsValues(model, matrices);
+
+        HashMap<String, BiConsumer<VisualMatrix, String>> output = biFunctionsHashMapFiller.fillNewHashMap(biActionsKeys, biFunctions);
 
         return output;
     }

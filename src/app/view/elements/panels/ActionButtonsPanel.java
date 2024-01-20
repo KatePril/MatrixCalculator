@@ -1,6 +1,6 @@
 package app.view.elements.panels;
 
-import app.view.elements.ActionButton;
+import  app.view.elements.buttons.ActionButton;
 
 import javax.swing.*;
 import java.awt.*;

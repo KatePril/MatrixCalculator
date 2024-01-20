@@ -1,17 +1,18 @@
-package app.view.elements;
+package app.view.elements.inputs;
 
 import javax.swing.*;
 import java.awt.*;
 
-public class MatrixInput extends JTextField {
-    private static final int HEIGHT = 40;
-    private static final int WIDTH = 60;
+public class ScalarInput extends JTextField {
 
-    public MatrixInput(int columns) {
-        super(columns);
+    private static final int HEIGHT = 40;
+    private static final int WIDTH = 40;
+
+    public ScalarInput() {
+        super(0);
         setPreferredSize(new Dimension(WIDTH, HEIGHT));
-        setMaximumSize(new Dimension(WIDTH, HEIGHT));
         setMinimumSize(new Dimension(WIDTH, HEIGHT));
+        setMaximumSize(new Dimension(WIDTH, HEIGHT));
     }
 
     public static int getHEIGHT() {

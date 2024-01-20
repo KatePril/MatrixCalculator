@@ -1,4 +1,4 @@
-package app.view.elements;
+package app.view.elements.buttons;
 
 import javax.swing.*;
 import java.awt.*;

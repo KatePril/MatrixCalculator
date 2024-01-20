@@ -53,15 +53,63 @@ public class CalculatorView {
     }
 
     public JButton getMatrixATranspositionButton() {
-        return frame.getPanel().getPanel().getMatrixA().getButton();
+        return frame.getPanel().getPanel().getMatrixA().getPanel().getTranspositionButton();
+    }
+
+    public JButton getMatrixAScalarMultiplicationButton() {
+        return frame.getPanel().getPanel().getMatrixA().getPanel().getScalarMultiplicationButton();
+    }
+
+    public JButton getMatrixAPowerButton() {
+        return frame.getPanel().getPanel().getMatrixA().getPanel().getPowerButton();
+    }
+
+    public JTextField getMatrixAScalarMultiplicationInput() {
+        return frame.getPanel().getPanel().getMatrixA().getPanel().getScalarInput();
+    }
+
+    public JTextField getMatrixAPowerInput() {
+        return frame.getPanel().getPanel().getMatrixA().getPanel().getPowerInput();
     }
 
     public JButton getMatrixBTranspositionButton() {
-        return frame.getPanel().getPanel().getMatrixB().getButton();
+        return frame.getPanel().getPanel().getMatrixB().getPanel().getTranspositionButton();
+    }
+
+    public JButton getMatrixBScalarMultiplicationButton() {
+        return frame.getPanel().getPanel().getMatrixB().getPanel().getScalarMultiplicationButton();
+    }
+
+    public JButton getMatrixBPowerButton() {
+        return frame.getPanel().getPanel().getMatrixB().getPanel().getPowerButton();
+    }
+
+    public JTextField getMatrixBScalarMultiplicationInput() {
+        return frame.getPanel().getPanel().getMatrixB().getPanel().getScalarInput();
+    }
+
+    public JTextField getMatrixBPowerInput() {
+        return frame.getPanel().getPanel().getMatrixB().getPanel().getPowerInput();
     }
 
     public JButton getResultMatrixTranspositionButton() {
-        return frame.getPanel().getPanel().getResultMatrix().getMatrix().getButton();
+        return frame.getPanel().getPanel().getResultMatrix().getMatrix().getPanel().getTranspositionButton();
+    }
+
+    public JButton getResultMatrixScalarMultiplicationButton() {
+        return frame.getPanel().getPanel().getResultMatrix().getMatrix().getPanel().getScalarMultiplicationButton();
+    }
+
+    public JButton getResultMatrixPowerButton() {
+        return frame.getPanel().getPanel().getResultMatrix().getMatrix().getPanel().getPowerButton();
+    }
+
+    public JTextField getResultMatrixScalarMultiplicationInput() {
+        return frame.getPanel().getPanel().getResultMatrix().getMatrix().getPanel().getScalarInput();
+    }
+
+    public JTextField getResultMatrixPowerInput() {
+        return frame.getPanel().getPanel().getResultMatrix().getMatrix().getPanel().getPowerInput();
     }
 
     public JButton getPasteMatrixAButton() {

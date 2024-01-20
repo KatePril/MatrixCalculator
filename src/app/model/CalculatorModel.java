@@ -17,4 +17,12 @@ public class CalculatorModel {
     public Integer[][] transposeMatrix(Integer[][] a) {
         return MatrixTransposer.transposeMatrix(a);
     }
+
+    public Integer[][] scalarMultiplyMatrices(Integer[][] a, Integer scalar) {
+        return MatrixScalarMultiplier.multiplyMatrix(a, scalar);
+    }
+
+    public Integer[][] powerMatrices(Integer[][] a, Integer scalar) {
+        return MatrixPowerer.powerMatrix(a, scalar);
+    }
 }
