@@ -8,6 +8,7 @@ import app.view.CalculatorView;
 import javax.swing.*;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.function.BiConsumer;
 import java.util.function.Consumer;
 
 public final class HashMapsGenerator {
@@ -43,6 +44,17 @@ public final class HashMapsGenerator {
         HashMap<String, Consumer<VisualMatrix>> output = functionsHashMapFiller.fillNewHashMap(actionsKeys, functions);
 
         return output;
+    }
+
+    public static HashMap<String, BiConsumer<VisualMatrix, Integer>> getBiFunctionsHashMap(CalculatorModel model, HashMap<String, VisualMatrix> matrices) {
+        HashMapFiller<String, BiConsumer<VisualMatrix, Integer>> biFunctionsHashMapFiller = new HashMapFiller<>();
+
+        ArrayList<String> biActionsKeys = KeysArrayListGenerator.getBiActionsKeys();
+        ArrayList<BiConsumer<VisualMatrix, Integer>> biFunctions = ValuesArrayListGenerator.getBiFunctionsValues(model, matrices);
+
+        HashMap<String, BiConsumer<VisualMatrix, Integer>> output = biFunctionsHashMapFiller.fillNewHashMap(biActionsKeys, biFunctions);
+
+        return output
     }
 
 }
