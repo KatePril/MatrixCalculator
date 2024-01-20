@@ -4,7 +4,7 @@ public class SizeController {
     private CalculatorController calculatorController;
 
     public SizeController() {
-        calculatorController = new CalculatorController(2);
+        calculatorController = new CalculatorController(3);
         changeSize();
     }
 
