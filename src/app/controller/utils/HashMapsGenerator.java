@@ -35,6 +35,17 @@ public final class HashMapsGenerator {
         return output;
     }
 
+    public static HashMap<String, JTextField> getInputsHashMap(CalculatorView view) {
+        HashMapFiller<String, JTextField> inputsHashMapFiller = new HashMapFiller<>();
+
+        ArrayList<String> inputsKeys = KeysArrayListGenerator.getInputKeys();
+        ArrayList<JTextField> inputs = ValuesArrayListGenerator.getInputsValues(view);
+
+        HashMap<String, JTextField> output = inputsHashMapFiller.fillNewHashMap(inputsKeys, inputs);
+
+        return output;
+    }
+
     public static HashMap<String, Consumer<VisualMatrix>> getFunctionsHashMap(CalculatorModel model, HashMap<String, VisualMatrix> matrices) {
         HashMapFiller<String, Consumer<VisualMatrix>> functionsHashMapFiller = new HashMapFiller<>();
 
@@ -46,15 +57,15 @@ public final class HashMapsGenerator {
         return output;
     }
 
-    public static HashMap<String, BiConsumer<VisualMatrix, Integer>> getBiFunctionsHashMap(CalculatorModel model, HashMap<String, VisualMatrix> matrices) {
-        HashMapFiller<String, BiConsumer<VisualMatrix, Integer>> biFunctionsHashMapFiller = new HashMapFiller<>();
+    public static HashMap<String, BiConsumer<VisualMatrix, String>> getBiFunctionsHashMap(CalculatorModel model, HashMap<String, VisualMatrix> matrices) {
+        HashMapFiller<String, BiConsumer<VisualMatrix, String>> biFunctionsHashMapFiller = new HashMapFiller<>();
 
         ArrayList<String> biActionsKeys = KeysArrayListGenerator.getBiActionsKeys();
-        ArrayList<BiConsumer<VisualMatrix, Integer>> biFunctions = ValuesArrayListGenerator.getBiFunctionsValues(model, matrices);
+        ArrayList<BiConsumer<VisualMatrix, String>> biFunctions = ValuesArrayListGenerator.getBiFunctionsValues(model, matrices);
 
-        HashMap<String, BiConsumer<VisualMatrix, Integer>> output = biFunctionsHashMapFiller.fillNewHashMap(biActionsKeys, biFunctions);
+        HashMap<String, BiConsumer<VisualMatrix, String>> output = biFunctionsHashMapFiller.fillNewHashMap(biActionsKeys, biFunctions);
 
-        return output
+        return output;
     }
 
 }

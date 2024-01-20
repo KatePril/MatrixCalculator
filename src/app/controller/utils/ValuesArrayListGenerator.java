@@ -51,6 +51,20 @@ public final class ValuesArrayListGenerator {
         return buttons;
     }
 
+    public static ArrayList<JTextField> getInputsValues(CalculatorView view) {
+        ArrayList<JTextField> inputs = new ArrayList<>();
+
+        inputs.add(view.getMatrixAScalarMultiplicationInput());
+        inputs.add(view.getMatrixBScalarMultiplicationInput());
+        inputs.add(view.getResultMatrixScalarMultiplicationInput());
+
+        inputs.add(view.getMatrixAPowerInput());
+        inputs.add(view.getMatrixBPowerInput());
+        inputs.add(view.getResultMatrixPowerInput());
+
+        return inputs;
+    }
+
     public static ArrayList<Consumer<VisualMatrix>> getFunctionsValues(CalculatorModel model, HashMap<String, VisualMatrix> matrices) {
         ArrayList<Consumer<VisualMatrix>> functions = new ArrayList<>();
 
@@ -107,19 +121,23 @@ public final class ValuesArrayListGenerator {
         return functions;
     }
 
-    public static ArrayList<BiConsumer<VisualMatrix, Integer>> getBiFunctionsValues(CalculatorModel model, HashMap<String, VisualMatrix> matrices) {
-        ArrayList<BiConsumer<VisualMatrix, Integer>> functions = new ArrayList<>();
+    public static ArrayList<BiConsumer<VisualMatrix, String>> getBiFunctionsValues(CalculatorModel model, HashMap<String, VisualMatrix> matrices) {
+        ArrayList<BiConsumer<VisualMatrix, String>> functions = new ArrayList<>();
 
-        functions.add((matrix, scalar) -> {
+        functions.add((matrix, input) -> {
                 Integer[][] matrixValues = Converter.convertStringArrayToIntArray(matrix.getValues());
+                Integer scalar = Integer.parseInt(input);
+
                 Integer[][] newMatrix = MatrixScalarMultiplier.multiplyMatrix(matrixValues, scalar);
 
                 matrix.fillFields(newMatrix);
             }
         );
 
-        functions.add((matrix, scalar) -> {
+        functions.add((matrix, input) -> {
                 Integer[][] matrixValues = Converter.convertStringArrayToIntArray(matrix.getValues());
+                Integer scalar = Integer.parseInt(input);
+
                 Integer[][] newMatrix = MatrixPowerer.powerMatrix(matrixValues, scalar);
 
                 matrix.fillFields(newMatrix);
