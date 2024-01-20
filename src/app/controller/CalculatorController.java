@@ -1,20 +1,16 @@
 package app.controller;
 
 import app.controller.utils.HashMapsGenerator;
-import app.controller.utils.KeysArrayListGenerator;
-import app.controller.utils.ValuesArrayListGenerator;
 import app.entity.VisualMatrix;
 import app.enums.Actions;
 import app.enums.Matrices;
 import app.model.CalculatorModel;
 import app.utils.StringConstants;
-import app.utils.HashMapFiller;
 import app.utils.Validator;
 import app.view.CalculatorView;
 import app.view.elements.CalculatorFrame;
 
 import javax.swing.*;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.function.Consumer;
 
@@ -64,7 +60,7 @@ public class CalculatorController {
                 functionsHashMap.get(key).accept(matricesHashMap.get(Matrices.RESULT_MATRIX.name()));
 
             } else {
-                calculatorView.setLabelText(StringConstants.INCORRECT_DATA_MSG);
+                calculatorView.setLabelText(StringConstants.INCORRECT_MATRIX_INPUT_MSG);
             }
         });
 
@@ -77,7 +73,7 @@ public class CalculatorController {
                 functionsHashMap.get(keyAction).accept(matricesHashMap.get(keyMatrix));
 
             } else {
-                calculatorView.setLabelText(StringConstants.INCORRECT_DATA_MSG);
+                calculatorView.setLabelText(StringConstants.INCORRECT_MATRIX_INPUT_MSG);
             }
         });
     }
