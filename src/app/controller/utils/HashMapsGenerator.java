@@ -3,6 +3,7 @@ package app.controller.utils;
 import app.entity.VisualMatrix;
 import app.model.CalculatorModel;
 import app.utils.HashMapFiller;
+import app.utils.Validator;
 import app.view.CalculatorView;
 
 import javax.swing.*;
@@ -10,6 +11,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.function.BiConsumer;
 import java.util.function.Consumer;
+import java.util.function.Predicate;
 
 public final class HashMapsGenerator {
 
@@ -64,6 +66,28 @@ public final class HashMapsGenerator {
         ArrayList<BiConsumer<VisualMatrix, String>> biFunctions = ValuesArrayListGenerator.getBiFunctionsValues(model, matrices);
 
         HashMap<String, BiConsumer<VisualMatrix, String>> output = biFunctionsHashMapFiller.fillNewHashMap(biActionsKeys, biFunctions);
+
+        return output;
+    }
+
+    public static HashMap<String, Predicate<String>> getValidationHashMap() {
+        HashMapFiller<String, Predicate<String>> validationHashMapFiller = new HashMapFiller<>();
+
+        ArrayList<String> biActionsKeys = KeysArrayListGenerator.getBiActionsKeys();
+        ArrayList<Predicate<String>> validationArray = ValuesArrayListGenerator.getValidationValues();
+
+        HashMap<String, Predicate<String>> output = validationHashMapFiller.fillNewHashMap(biActionsKeys, validationArray);
+
+        return output;
+    }
+
+    public static HashMap<String, String> getMsgValidationHashMap() {
+        HashMapFiller<String, String> validationHashMapFiller = new HashMapFiller<>();
+
+        ArrayList<String> biActionsKeys = KeysArrayListGenerator.getBiActionsKeys();
+        ArrayList<String> validationArray = ValuesArrayListGenerator.getValidationMsgValues();
+
+        HashMap<String, String> output = validationHashMapFiller.fillNewHashMap(biActionsKeys, validationArray);
 
         return output;
     }

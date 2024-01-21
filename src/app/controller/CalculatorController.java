@@ -14,6 +14,7 @@ import javax.swing.*;
 import java.util.HashMap;
 import java.util.function.BiConsumer;
 import java.util.function.Consumer;
+import java.util.function.Predicate;
 
 public class CalculatorController {
     private final CalculatorView calculatorView;
@@ -24,6 +25,8 @@ public class CalculatorController {
     private final HashMap<String, Consumer<VisualMatrix>> functionsHashMap;
     private final HashMap<String, JTextField> inputsHashMap;
     private final HashMap<String, BiConsumer<VisualMatrix, String>> biFunctionsHashMap;
+    private final HashMap<String, Predicate<String>> validationHashMap;
+    private final HashMap<String, String> validationMsgHashMap;
 
 
     public CalculatorController(int size) {
@@ -35,6 +38,8 @@ public class CalculatorController {
         this.functionsHashMap = HashMapsGenerator.getFunctionsHashMap(calculatorModel, matricesHashMap);
         this.inputsHashMap = HashMapsGenerator.getInputsHashMap(calculatorView);
         this.biFunctionsHashMap = HashMapsGenerator.getBiFunctionsHashMap(calculatorModel, matricesHashMap);
+        this.validationHashMap = HashMapsGenerator.getValidationHashMap();
+        this.validationMsgHashMap = HashMapsGenerator.getMsgValidationHashMap();
 
         addActionListeners();
     }
@@ -95,13 +100,19 @@ public class CalculatorController {
         buttonsHashMap.get(keyAction + "_" + keyMatrix).addActionListener(l -> {
             String inputValue = inputsHashMap.get(keyAction + "_" + keyMatrix).getText();
 
-            if (isMatrixValid(keyMatrix) && Validator.isInputValid(inputValue)) {
-                calculatorView.clearLabel();
-                biFunctionsHashMap.get(keyAction).accept(matricesHashMap.get(keyMatrix), inputValue);
+            if (validationHashMap.get(keyAction).test(inputValue)) {
+                if (isMatrixValid(keyMatrix)) {
+                    calculatorView.clearLabel();
+                    biFunctionsHashMap.get(keyAction).accept(matricesHashMap.get(keyMatrix), inputValue);
 
+                } else {
+                    calculatorView.setLabelText(StringConstants.INCORRECT_MATRIX_INPUT_MSG);
+                }
             } else {
-                calculatorView.setLabelText(StringConstants.INCORRECT_MATRIX_INPUT_MSG);
+                calculatorView.setLabelText(validationMsgHashMap.get(keyAction));
             }
+
+
         });
     }
 
