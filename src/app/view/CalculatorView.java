@@ -53,63 +53,63 @@ public class CalculatorView {
     }
 
     public JButton getMatrixATranspositionButton() {
-        return frame.getPanel().getPanel().getMatrixA().getPanel().getTranspositionButton();
+        return frame.getPanel().getPanel().getMatrixA().getButtonsPanel().getTranspositionButton();
     }
 
     public JButton getMatrixAScalarMultiplicationButton() {
-        return frame.getPanel().getPanel().getMatrixA().getPanel().getScalarMultiplicationButton();
+        return frame.getPanel().getPanel().getMatrixA().getButtonsPanel().getScalarMultiplicationButton();
     }
 
     public JButton getMatrixAPowerButton() {
-        return frame.getPanel().getPanel().getMatrixA().getPanel().getPowerButton();
+        return frame.getPanel().getPanel().getMatrixA().getButtonsPanel().getPowerButton();
     }
 
     public JTextField getMatrixAScalarMultiplicationInput() {
-        return frame.getPanel().getPanel().getMatrixA().getPanel().getScalarInput();
+        return frame.getPanel().getPanel().getMatrixA().getButtonsPanel().getScalarInput();
     }
 
     public JTextField getMatrixAPowerInput() {
-        return frame.getPanel().getPanel().getMatrixA().getPanel().getPowerInput();
+        return frame.getPanel().getPanel().getMatrixA().getButtonsPanel().getPowerInput();
     }
 
     public JButton getMatrixBTranspositionButton() {
-        return frame.getPanel().getPanel().getMatrixB().getPanel().getTranspositionButton();
+        return frame.getPanel().getPanel().getMatrixB().getButtonsPanel().getTranspositionButton();
     }
 
     public JButton getMatrixBScalarMultiplicationButton() {
-        return frame.getPanel().getPanel().getMatrixB().getPanel().getScalarMultiplicationButton();
+        return frame.getPanel().getPanel().getMatrixB().getButtonsPanel().getScalarMultiplicationButton();
     }
 
     public JButton getMatrixBPowerButton() {
-        return frame.getPanel().getPanel().getMatrixB().getPanel().getPowerButton();
+        return frame.getPanel().getPanel().getMatrixB().getButtonsPanel().getPowerButton();
     }
 
     public JTextField getMatrixBScalarMultiplicationInput() {
-        return frame.getPanel().getPanel().getMatrixB().getPanel().getScalarInput();
+        return frame.getPanel().getPanel().getMatrixB().getButtonsPanel().getScalarInput();
     }
 
     public JTextField getMatrixBPowerInput() {
-        return frame.getPanel().getPanel().getMatrixB().getPanel().getPowerInput();
+        return frame.getPanel().getPanel().getMatrixB().getButtonsPanel().getPowerInput();
     }
 
     public JButton getResultMatrixTranspositionButton() {
-        return frame.getPanel().getPanel().getResultMatrix().getMatrix().getPanel().getTranspositionButton();
+        return frame.getPanel().getPanel().getResultMatrix().getMatrix().getButtonsPanel().getTranspositionButton();
     }
 
     public JButton getResultMatrixScalarMultiplicationButton() {
-        return frame.getPanel().getPanel().getResultMatrix().getMatrix().getPanel().getScalarMultiplicationButton();
+        return frame.getPanel().getPanel().getResultMatrix().getMatrix().getButtonsPanel().getScalarMultiplicationButton();
     }
 
     public JButton getResultMatrixPowerButton() {
-        return frame.getPanel().getPanel().getResultMatrix().getMatrix().getPanel().getPowerButton();
+        return frame.getPanel().getPanel().getResultMatrix().getMatrix().getButtonsPanel().getPowerButton();
     }
 
     public JTextField getResultMatrixScalarMultiplicationInput() {
-        return frame.getPanel().getPanel().getResultMatrix().getMatrix().getPanel().getScalarInput();
+        return frame.getPanel().getPanel().getResultMatrix().getMatrix().getButtonsPanel().getScalarInput();
     }
 
     public JTextField getResultMatrixPowerInput() {
-        return frame.getPanel().getPanel().getResultMatrix().getMatrix().getPanel().getPowerInput();
+        return frame.getPanel().getPanel().getResultMatrix().getMatrix().getButtonsPanel().getPowerInput();
     }
 
     public JButton getPasteMatrixAButton() {
@@ -118,5 +118,21 @@ public class CalculatorView {
 
     public JButton getPasteMatrixBButton() {
         return frame.getPanel().getPastePanel().getPasteMatrixBButton();
+    }
+
+    public JComboBox<Integer> getMatrixARowSelector() {
+        return frame.getPanel().getPanel().getMatrixA().getSelectorsPanel().getRowSelector();
+    }
+
+    public JComboBox<Integer> getMatrixAColumnSelector() {
+        return frame.getPanel().getPanel().getMatrixA().getSelectorsPanel().getColumnSelector();
+    }
+
+    public JComboBox<Integer> getMatrixBRowSelector() {
+        return frame.getPanel().getPanel().getMatrixB().getSelectorsPanel().getRowSelector();
+    }
+
+    public JComboBox<Integer> getMatrixBColumnSelector() {
+        return frame.getPanel().getPanel().getMatrixB().getSelectorsPanel().getColumnSelector();
     }
 }

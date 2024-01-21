@@ -5,21 +5,28 @@ import javax.swing.*;
 import java.awt.*;
 
 public class FullMatrixPanel extends JPanel {
-    private MatrixButtonsPanel panel;
+    private MatrixButtonsPanel buttonsPanel;
+    private SelectorsPanel selectorsPanel;
     private MatrixPanel matrix;
 
     public FullMatrixPanel(int size) {
         matrix = new MatrixPanel(size);
-        panel = new MatrixButtonsPanel(matrix.getWidth());
+        buttonsPanel = new MatrixButtonsPanel(matrix.getWidth());
+        selectorsPanel = new SelectorsPanel(size, size);
 
-        setPreferredSize(new Dimension(matrix.getWidth(), matrix.getHeight() + panel.getHEIGHT() + 50));
+        setPreferredSize(new Dimension(matrix.getWidth(), matrix.getHeight() + buttonsPanel.getHEIGHT() + 50));
 
+        add(selectorsPanel);
         add(matrix);
-        add(panel);
+        add(buttonsPanel);
     }
 
-    public MatrixButtonsPanel getPanel() {
-        return panel;
+    public SelectorsPanel getSelectorsPanel() {
+        return selectorsPanel;
+    }
+
+    public MatrixButtonsPanel getButtonsPanel() {
+        return buttonsPanel;
     }
 
     public MatrixPanel getMatrix() {
