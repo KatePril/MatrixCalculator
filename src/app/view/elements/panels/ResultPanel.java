@@ -3,15 +3,15 @@ package app.view.elements.panels;
 import javax.swing.*;
 
 public class ResultPanel extends JPanel {
-    private FullMatrixPanel matrix;
+    private MatrixWithButtonsPanel matrix;
 
     public ResultPanel(int rows, int columns) {
         add(new JLabel("="));
-        matrix = new FullMatrixPanel(rows, columns);
+        matrix = new MatrixWithButtonsPanel(rows, columns);
         add(matrix);
     }
 
-    public FullMatrixPanel getMatrix() {
+    public MatrixWithButtonsPanel getMatrix() {
         return matrix;
     }
 }

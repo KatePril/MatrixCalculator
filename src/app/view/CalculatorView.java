@@ -25,16 +25,12 @@ public class CalculatorView {
         return frame;
     }
 
-//    public JComboBox<Integer> getSizeSelector() {
-//        return frame.getPanel().getSizeSelector();
-//    }
-
     public VisualMatrix getMatrixA() {
-        return frame.getPanel().getPanel().getMatrixA().getMatrix().getMatrix();
+        return frame.getPanel().getPanel().getMatrixA().getPanel().getMatrix().getMatrix();
     }
 
     public VisualMatrix getMatrixB() {
-        return frame.getPanel().getPanel().getMatrixB().getMatrix().getMatrix();
+        return frame.getPanel().getPanel().getMatrixB().getPanel().getMatrix().getMatrix();
     }
 
     public VisualMatrix getResultMatrix() {
@@ -54,43 +50,43 @@ public class CalculatorView {
     }
 
     public JButton getMatrixATranspositionButton() {
-        return frame.getPanel().getPanel().getMatrixA().getButtonsPanel().getTranspositionButton();
+        return frame.getPanel().getPanel().getMatrixA().getPanel().getButtonsPanel().getTranspositionButton();
     }
 
     public JButton getMatrixAScalarMultiplicationButton() {
-        return frame.getPanel().getPanel().getMatrixA().getButtonsPanel().getScalarMultiplicationButton();
+        return frame.getPanel().getPanel().getMatrixA().getPanel().getButtonsPanel().getScalarMultiplicationButton();
     }
 
     public JButton getMatrixAPowerButton() {
-        return frame.getPanel().getPanel().getMatrixA().getButtonsPanel().getPowerButton();
+        return frame.getPanel().getPanel().getMatrixA().getPanel().getButtonsPanel().getPowerButton();
     }
 
     public JTextField getMatrixAScalarMultiplicationInput() {
-        return frame.getPanel().getPanel().getMatrixA().getButtonsPanel().getScalarInput();
+        return frame.getPanel().getPanel().getMatrixA().getPanel().getButtonsPanel().getScalarInput();
     }
 
     public JTextField getMatrixAPowerInput() {
-        return frame.getPanel().getPanel().getMatrixA().getButtonsPanel().getPowerInput();
+        return frame.getPanel().getPanel().getMatrixA().getPanel().getButtonsPanel().getPowerInput();
     }
 
     public JButton getMatrixBTranspositionButton() {
-        return frame.getPanel().getPanel().getMatrixB().getButtonsPanel().getTranspositionButton();
+        return frame.getPanel().getPanel().getMatrixB().getPanel().getButtonsPanel().getTranspositionButton();
     }
 
     public JButton getMatrixBScalarMultiplicationButton() {
-        return frame.getPanel().getPanel().getMatrixB().getButtonsPanel().getScalarMultiplicationButton();
+        return frame.getPanel().getPanel().getMatrixB().getPanel().getButtonsPanel().getScalarMultiplicationButton();
     }
 
     public JButton getMatrixBPowerButton() {
-        return frame.getPanel().getPanel().getMatrixB().getButtonsPanel().getPowerButton();
+        return frame.getPanel().getPanel().getMatrixB().getPanel().getButtonsPanel().getPowerButton();
     }
 
     public JTextField getMatrixBScalarMultiplicationInput() {
-        return frame.getPanel().getPanel().getMatrixB().getButtonsPanel().getScalarInput();
+        return frame.getPanel().getPanel().getMatrixB().getPanel().getButtonsPanel().getScalarInput();
     }
 
     public JTextField getMatrixBPowerInput() {
-        return frame.getPanel().getPanel().getMatrixB().getButtonsPanel().getPowerInput();
+        return frame.getPanel().getPanel().getMatrixB().getPanel().getButtonsPanel().getPowerInput();
     }
 
     public JButton getResultMatrixTranspositionButton() {

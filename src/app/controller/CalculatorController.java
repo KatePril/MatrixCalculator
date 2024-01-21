@@ -121,11 +121,6 @@ public class CalculatorController {
         return calculatorView.getMatrixBColumnSelector();
     }
 
-
-//    public JComboBox<Integer> getSizeSelector() {
-//        return calculatorView.getSizeSelector();
-//    }
-
     public CalculatorFrame getCalculatorFrame() {
         return calculatorView.getFrame();
     }
