@@ -14,13 +14,14 @@ public class MatrixPanel extends JPanel {
 
     private VisualMatrix matrix;
 
-    public MatrixPanel(int size) {
-        int numberOfSpaces = size - 1;
-        PANEL_WIDTH = MatrixElementInput.getWIDTH() * size + numberOfSpaces * SPACE_SIZE;
-        PANEL_HEIGHT = MatrixElementInput.getHEIGHT() * size + numberOfSpaces * SPACE_SIZE;
+    public MatrixPanel(int rows, int columns) {
+        int numberOfRowSpaces = rows - 1;
+        int numberOfColumnSpaces = columns - 1;
+        PANEL_WIDTH = MatrixElementInput.getWIDTH() * columns + numberOfColumnSpaces * SPACE_SIZE;
+        PANEL_HEIGHT = MatrixElementInput.getHEIGHT() * rows + numberOfRowSpaces * SPACE_SIZE;
         setPreferredSize(new Dimension(PANEL_WIDTH, PANEL_HEIGHT));
 
-        matrix = new VisualMatrix(size);
+        matrix = new VisualMatrix(rows, columns);
         matrix.drawMatrix(this);
     }
 

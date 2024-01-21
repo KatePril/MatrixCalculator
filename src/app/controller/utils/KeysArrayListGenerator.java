@@ -2,6 +2,7 @@ package app.controller.utils;
 
 import app.enums.Actions;
 import app.enums.Matrices;
+import app.enums.Sizes;
 
 import java.util.ArrayList;
 
@@ -73,6 +74,17 @@ public final class KeysArrayListGenerator {
         array.add(Actions.POWER.name() + "_" + Matrices.MATRIX_A.name());
         array.add(Actions.POWER.name() + "_" + Matrices.MATRIX_B.name());
         array.add(Actions.POWER.name() + "_" + Matrices.RESULT_MATRIX.name());
+    }
+
+    public static ArrayList<String> getSizesKeys() {
+        ArrayList<String> sizeKeys = new ArrayList<>();
+
+        sizeKeys.add(Sizes.MATRIX_A_ROWS.name());
+        sizeKeys.add(Sizes.MATRIX_A_COLUMNS.name());
+        sizeKeys.add(Sizes.MATRIX_B_ROWS.name());
+        sizeKeys.add(Sizes.MATRIX_B_COLUMNS.name());
+
+        return sizeKeys;
     }
 
 

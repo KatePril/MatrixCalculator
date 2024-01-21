@@ -1,6 +1,9 @@
 package app.view.elements.panels;
 
+import app.enums.Sizes;
+
 import javax.swing.*;
+import java.util.HashMap;
 
 public class CalculatorMatrixPanel extends JPanel {
     FullMatrixPanel matrixA;
@@ -8,12 +11,12 @@ public class CalculatorMatrixPanel extends JPanel {
     ActionButtonsPanel buttonsPanel;
     ResultPanel resultMatrix;
 
-    public CalculatorMatrixPanel(int size) {
-        fillPanel(size);
+    public CalculatorMatrixPanel(HashMap<String, Integer> sizes) {
+        fillPanel(sizes);
     }
 
-    private FullMatrixPanel createTranspositionPanel(int size) {
-        return new FullMatrixPanel(size);
+    private FullMatrixPanel createFullMatrixPanel(int rows, int columns) {
+        return new FullMatrixPanel(rows, columns);
     }
 
     private void createButtonsPanel() {
@@ -21,19 +24,25 @@ public class CalculatorMatrixPanel extends JPanel {
         add(buttonsPanel);
     }
 
-    private void createResultMatrix(int size) {
-        resultMatrix = new ResultPanel(size);
+    private void createResultMatrix(int rows, int columns) {
+        resultMatrix = new ResultPanel(rows, columns);
         add(resultMatrix);
     }
 
-    private void fillPanel(int size) {
-        matrixA = createTranspositionPanel(size);
+    private void fillPanel(HashMap<String, Integer> sizes) {
+        int rowsA = sizes.get(Sizes.MATRIX_A_ROWS.name());
+        int columnsA = sizes.get(Sizes.MATRIX_A_COLUMNS.name());
+        matrixA = createFullMatrixPanel(rowsA, columnsA);
         add(matrixA);
+
         createButtonsPanel();
-        matrixB = createTranspositionPanel(size);
+
+        int rowsB = sizes.get(Sizes.MATRIX_B_ROWS.name());
+        int columnsB = sizes.get(Sizes.MATRIX_B_COLUMNS.name());
+        matrixB = createFullMatrixPanel(rowsB, columnsB);
         add(matrixB);
 
-        createResultMatrix(size);
+        createResultMatrix(rowsA, columnsB);
     }
 
     public FullMatrixPanel getMatrixA() {

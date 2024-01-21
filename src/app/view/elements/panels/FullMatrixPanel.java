@@ -9,10 +9,10 @@ public class FullMatrixPanel extends JPanel {
     private SelectorsPanel selectorsPanel;
     private MatrixPanel matrix;
 
-    public FullMatrixPanel(int size) {
-        matrix = new MatrixPanel(size);
+    public FullMatrixPanel(int rows, int columns) {
+        matrix = new MatrixPanel(rows, columns);
         buttonsPanel = new MatrixButtonsPanel(matrix.getWidth());
-        selectorsPanel = new SelectorsPanel(size, size);
+        selectorsPanel = new SelectorsPanel(rows, columns);
 
         setPreferredSize(new Dimension(matrix.getWidth(), matrix.getHeight() + buttonsPanel.getHEIGHT() + 50));
 

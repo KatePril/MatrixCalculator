@@ -4,12 +4,13 @@ import app.entity.VisualMatrix;
 import app.view.elements.CalculatorFrame;
 
 import javax.swing.*;
+import java.util.HashMap;
 
 public class CalculatorView {
     CalculatorFrame frame;
 
-    public CalculatorView(int size) {
-        frame = new CalculatorFrame("Calculator", size);
+    public CalculatorView(HashMap<String, Integer> sizes) {
+        frame = new CalculatorFrame("Calculator", sizes);
     }
 
     public void clearLabel() {
@@ -24,9 +25,9 @@ public class CalculatorView {
         return frame;
     }
 
-    public JComboBox<Integer> getSizeSelector() {
-        return frame.getPanel().getSizeSelector();
-    }
+//    public JComboBox<Integer> getSizeSelector() {
+//        return frame.getPanel().getSizeSelector();
+//    }
 
     public VisualMatrix getMatrixA() {
         return frame.getPanel().getPanel().getMatrixA().getMatrix().getMatrix();

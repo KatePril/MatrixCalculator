@@ -9,12 +9,14 @@ import javax.swing.*;
 import java.util.Iterator;
 
 public class VisualMatrix {
-    private final int SIZE;
+    private final int ROWS;
+    private final int COLUMNS;
     private MatrixElementInput[][] fields;
 
-    public VisualMatrix(int size) {
-        this.SIZE = size;
-        fields = new MatrixElementInput[size][size];
+    public VisualMatrix(int rows, int columns) {
+        this.ROWS = rows;
+        this.COLUMNS = columns;
+        fields = new MatrixElementInput[rows][columns];
         ElementSetterIterator<MatrixElementInput> iterator = new ElementSetterRowIterator<>(fields);
 
         while(iterator.hasNext()) {
@@ -23,7 +25,7 @@ public class VisualMatrix {
     }
 
     public String[][] getValues() {
-        String[][] values = new String[SIZE][SIZE];
+        String[][] values = new String[ROWS][COLUMNS];
         Iterator<MatrixElementInput> fieldsIterator = new RowIterator<>(fields);
         ElementSetterIterator<String> valuesIterator = new ElementSetterRowIterator<>(values);
 

@@ -13,8 +13,8 @@ public class ElementSetterRowIterator<E> implements ElementSetterIterator<E> {
 
     @Override
     public void setNext(E value) {
-        int rowIndex = currentElement / matrix.length;
-        int columnIndex = currentElement - (matrix.length * rowIndex);
+        int rowIndex = currentElement / matrix[0].length;
+        int columnIndex = currentElement - (matrix[0].length * rowIndex);
         currentElement++;
 
         matrix[rowIndex][columnIndex] = value;

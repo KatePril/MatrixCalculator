@@ -20,8 +20,8 @@ public class RowIterator<E> implements Iterator<E> {
 
     @Override
     public E next() {
-        int rowIndex = currentElement / matrix.length;
-        int columnIndex = currentElement - (matrix.length * rowIndex);
+        int rowIndex = currentElement / matrix[0].length;
+        int columnIndex = currentElement - (matrix[0].length * rowIndex);
         currentElement++;
 
         return matrix[rowIndex][columnIndex];

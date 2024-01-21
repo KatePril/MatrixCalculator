@@ -1,5 +1,6 @@
 package app.controller.utils;
 
+import app.controller.CalculatorController;
 import app.entity.VisualMatrix;
 import app.enums.Matrices;
 import app.model.CalculatorModel;
@@ -121,7 +122,7 @@ public final class ValuesArrayListGenerator {
         return functions;
     }
 
-    public static ArrayList<BiConsumer<VisualMatrix, String>> getBiFunctionsValues(CalculatorModel model, HashMap<String, VisualMatrix> matrices) {
+    public static ArrayList<BiConsumer<VisualMatrix, String>> getBiFunctionsValues(CalculatorModel model) {
         ArrayList<BiConsumer<VisualMatrix, String>> functions = new ArrayList<>();
 
         functions.add((matrix, input) -> {
@@ -145,5 +146,16 @@ public final class ValuesArrayListGenerator {
         );
 
         return functions;
+    }
+
+    public static ArrayList<JComboBox<Integer>> getSizeSelectorsValues(CalculatorController controller) {
+        ArrayList<JComboBox<Integer>> selectorsValues = new ArrayList<>();
+
+        selectorsValues.add(controller.getMatrixARowSelector());
+        selectorsValues.add(controller.getMatrixAColumnSelector());
+        selectorsValues.add(controller.getMatrixBRowSelector());
+        selectorsValues.add(controller.getMatrixBColumnSelector());
+
+        return selectorsValues;
     }
 }

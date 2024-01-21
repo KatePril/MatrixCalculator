@@ -5,9 +5,9 @@ import javax.swing.*;
 public class ResultPanel extends JPanel {
     private FullMatrixPanel matrix;
 
-    public ResultPanel(int size) {
+    public ResultPanel(int rows, int columns) {
         add(new JLabel("="));
-        matrix = new FullMatrixPanel(size);
+        matrix = new FullMatrixPanel(rows, columns);
         add(matrix);
     }
 

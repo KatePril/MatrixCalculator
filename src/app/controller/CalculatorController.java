@@ -26,15 +26,15 @@ public class CalculatorController {
     private final HashMap<String, BiConsumer<VisualMatrix, String>> biFunctionsHashMap;
 
 
-    public CalculatorController(int size) {
+    public CalculatorController(HashMap<String, Integer> sizes) {
         this.calculatorModel = new CalculatorModel();
-        this.calculatorView = new CalculatorView(size);
+        this.calculatorView = new CalculatorView(sizes);
 
         this.matricesHashMap = HashMapsGenerator.getMatricesHashMap(calculatorView);
         this.buttonsHashMap = HashMapsGenerator.getButtonsHashMap(calculatorView);
         this.functionsHashMap = HashMapsGenerator.getFunctionsHashMap(calculatorModel, matricesHashMap);
         this.inputsHashMap = HashMapsGenerator.getInputsHashMap(calculatorView);
-        this.biFunctionsHashMap = HashMapsGenerator.getBiFunctionsHashMap(calculatorModel, matricesHashMap);
+        this.biFunctionsHashMap = HashMapsGenerator.getBiFunctionsHashMap(calculatorModel);
 
         addActionListeners();
     }
@@ -105,10 +105,26 @@ public class CalculatorController {
         });
     }
 
-
-    public JComboBox<Integer> getSizeSelector() {
-        return calculatorView.getSizeSelector();
+    public JComboBox<Integer> getMatrixARowSelector() {
+        return calculatorView.getMatrixARowSelector();
     }
+
+    public JComboBox<Integer> getMatrixAColumnSelector() {
+        return calculatorView.getMatrixAColumnSelector();
+    }
+
+    public JComboBox<Integer> getMatrixBRowSelector() {
+        return calculatorView.getMatrixBRowSelector();
+    }
+
+    public JComboBox<Integer> getMatrixBColumnSelector() {
+        return calculatorView.getMatrixBColumnSelector();
+    }
+
+
+//    public JComboBox<Integer> getSizeSelector() {
+//        return calculatorView.getSizeSelector();
+//    }
 
     public CalculatorFrame getCalculatorFrame() {
         return calculatorView.getFrame();

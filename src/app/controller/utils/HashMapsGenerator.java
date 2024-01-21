@@ -1,11 +1,13 @@
 package app.controller.utils;
 
+import app.controller.CalculatorController;
 import app.entity.VisualMatrix;
 import app.model.CalculatorModel;
 import app.utils.HashMapFiller;
 import app.view.CalculatorView;
 
 import javax.swing.*;
+import java.awt.image.AreaAveragingScaleFilter;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.function.BiConsumer;
@@ -57,13 +59,24 @@ public final class HashMapsGenerator {
         return output;
     }
 
-    public static HashMap<String, BiConsumer<VisualMatrix, String>> getBiFunctionsHashMap(CalculatorModel model, HashMap<String, VisualMatrix> matrices) {
+    public static HashMap<String, BiConsumer<VisualMatrix, String>> getBiFunctionsHashMap(CalculatorModel model) {
         HashMapFiller<String, BiConsumer<VisualMatrix, String>> biFunctionsHashMapFiller = new HashMapFiller<>();
 
         ArrayList<String> biActionsKeys = KeysArrayListGenerator.getBiActionsKeys();
-        ArrayList<BiConsumer<VisualMatrix, String>> biFunctions = ValuesArrayListGenerator.getBiFunctionsValues(model, matrices);
+        ArrayList<BiConsumer<VisualMatrix, String>> biFunctions = ValuesArrayListGenerator.getBiFunctionsValues(model);
 
         HashMap<String, BiConsumer<VisualMatrix, String>> output = biFunctionsHashMapFiller.fillNewHashMap(biActionsKeys, biFunctions);
+
+        return output;
+    }
+
+    public static HashMap<String, JComboBox<Integer>> getSizeSelectorsHashMap(CalculatorController controller) {
+        HashMapFiller<String, JComboBox<Integer>> sizeSelectorsHashMapFiller = new HashMapFiller<>();
+
+        ArrayList<String> sizeSelectorsKeys = KeysArrayListGenerator.getSizesKeys();
+        ArrayList<JComboBox<Integer>> sizeSelectorsValues = ValuesArrayListGenerator.getSizeSelectorsValues(controller);
+
+        HashMap<String, JComboBox<Integer>> output = sizeSelectorsHashMapFiller.fillNewHashMap(sizeSelectorsKeys, sizeSelectorsValues);
 
         return output;
     }
