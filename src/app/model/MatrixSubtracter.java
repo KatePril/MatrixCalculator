@@ -9,7 +9,7 @@ import java.util.Iterator;
 public final class MatrixSubtracter {
 
     public static Integer[][] subtractMatrices(Integer[][] a, Integer[][] b) {
-        Integer[][] newMatrix = new Integer[a.length][a.length];
+        Integer[][] newMatrix = new Integer[a.length][a[0].length];
 
         ElementSetterIterator<Integer> newMatrixIterator = new ElementSetterRowIterator<>(newMatrix);
         Iterator<Integer> aIterator = new RowIterator<>(a);

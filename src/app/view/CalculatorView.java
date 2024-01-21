@@ -21,6 +21,10 @@ public class CalculatorView {
         frame.getPanel().setLabelText(text);
     }
 
+    public void createResultMatrix(int rows, int columns) {
+        frame.getPanel().createResultMatrix(rows, columns);
+    }
+
     public CalculatorFrame getFrame() {
         return frame;
     }

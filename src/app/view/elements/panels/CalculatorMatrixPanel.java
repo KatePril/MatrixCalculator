@@ -24,7 +24,7 @@ public class CalculatorMatrixPanel extends JPanel {
         add(buttonsPanel);
     }
 
-    private void createResultMatrix(int rows, int columns) {
+    public void createResultMatrix(int rows, int columns) {
         resultMatrix = new ResultPanel(rows, columns);
         add(resultMatrix);
     }
@@ -42,7 +42,7 @@ public class CalculatorMatrixPanel extends JPanel {
         matrixB = createFullMatrixPanel(rowsB, columnsB);
         add(matrixB);
 
-        createResultMatrix(rowsA, columnsB);
+//        createResultMatrix(rowsA, columnsB);
     }
 
     public FullMatrixPanel getMatrixA() {

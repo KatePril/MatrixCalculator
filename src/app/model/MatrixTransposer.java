@@ -9,7 +9,7 @@ import java.util.Iterator;
 public final class MatrixTransposer {
 
     public static Integer[][] transposeMatrix(Integer[][] a) {
-        Integer[][] newMatrix = new Integer[a.length][a.length];
+        Integer[][] newMatrix = new Integer[a.length][a[0].length];
 
         ElementSetterIterator<Integer> newMatrixIterator = new ElementSetterReverseRowIterator<>(newMatrix);
         Iterator<Integer> aIterator = new RowIterator<>(a);

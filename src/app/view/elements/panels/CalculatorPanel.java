@@ -39,6 +39,14 @@ public class CalculatorPanel extends JPanel{
         labelForWarnings.setText(text);
     }
 
+    public void createResultMatrix(int rows, int columns) {
+        if (panel.getResultMatrix() != null) {
+            panel.getResultMatrix().removeAll();
+        }
+        panel.createResultMatrix(rows, columns);
+        repaint();
+    }
+
     public CalculatorMatrixPanel getPanel() {
         return panel;
     }

@@ -13,7 +13,7 @@ public final class KeysArrayListGenerator {
 
         matricesKeys.add(Matrices.MATRIX_A.name());
         matricesKeys.add(Matrices.MATRIX_B.name());
-        matricesKeys.add(Matrices.RESULT_MATRIX.name());
+//        matricesKeys.add(Matrices.RESULT_MATRIX.name());
 
         return matricesKeys;
     }
@@ -27,7 +27,7 @@ public final class KeysArrayListGenerator {
 
         buttonsKeys.add(Actions.TRANSPOSE.name() + "_" + Matrices.MATRIX_A.name());
         buttonsKeys.add(Actions.TRANSPOSE.name() + "_" + Matrices.MATRIX_B.name());
-        buttonsKeys.add(Actions.TRANSPOSE.name() + "_" + Matrices.RESULT_MATRIX.name());
+//        buttonsKeys.add(Actions.TRANSPOSE.name() + "_" + Matrices.RESULT_MATRIX.name());
 
         fillArrays(buttonsKeys);
 
@@ -37,12 +37,19 @@ public final class KeysArrayListGenerator {
         return buttonsKeys;
     }
 
-    public static ArrayList<String> getActionsKeys() {
+    public static ArrayList<String> getNoArgActionsKeys() {
         ArrayList<String> actionsKeys = new ArrayList<>();
 
         actionsKeys.add(Actions.ADD.name());
         actionsKeys.add(Actions.MULTIPLY.name());
         actionsKeys.add(Actions.SUBTRACT.name());
+
+        return actionsKeys;
+    }
+
+    public static ArrayList<String> getActionsKeys() {
+        ArrayList<String> actionsKeys = new ArrayList<>();
+
         actionsKeys.add(Actions.TRANSPOSE.name());
         actionsKeys.add(Actions.PASTE.name());
 
@@ -69,11 +76,11 @@ public final class KeysArrayListGenerator {
     private static void fillArrays(ArrayList<String> array) {
         array.add(Actions.SCALAR_MULTIPLY.name() + "_" + Matrices.MATRIX_A.name());
         array.add(Actions.SCALAR_MULTIPLY.name() + "_" + Matrices.MATRIX_B.name());
-        array.add(Actions.SCALAR_MULTIPLY.name() + "_" + Matrices.RESULT_MATRIX.name());
+//        array.add(Actions.SCALAR_MULTIPLY.name() + "_" + Matrices.RESULT_MATRIX.name());
 
         array.add(Actions.POWER.name() + "_" + Matrices.MATRIX_A.name());
         array.add(Actions.POWER.name() + "_" + Matrices.MATRIX_B.name());
-        array.add(Actions.POWER.name() + "_" + Matrices.RESULT_MATRIX.name());
+//        array.add(Actions.POWER.name() + "_" + Matrices.RESULT_MATRIX.name());
     }
 
     public static ArrayList<String> getSizesKeys() {

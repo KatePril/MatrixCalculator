@@ -12,6 +12,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.function.BiConsumer;
 import java.util.function.Consumer;
+import java.util.function.Function;
 
 public final class HashMapsGenerator {
 
@@ -44,6 +45,19 @@ public final class HashMapsGenerator {
         ArrayList<JTextField> inputs = ValuesArrayListGenerator.getInputsValues(view);
 
         HashMap<String, JTextField> output = inputsHashMapFiller.fillNewHashMap(inputsKeys, inputs);
+
+        return output;
+    }
+
+    public static HashMap<String, NoArgumentFunction<Integer[][]>> getNoArgFunctionHashMap(
+            CalculatorModel model, HashMap<String, VisualMatrix> matrices) {
+
+        HashMapFiller<String, NoArgumentFunction<Integer[][]>> noArgFunctionsHashMapFiller = new HashMapFiller<>();
+
+        ArrayList<String> actionsKeys = KeysArrayListGenerator.getNoArgActionsKeys();
+        ArrayList<NoArgumentFunction<Integer[][]>> functions = ValuesArrayListGenerator.getNoArgFunction(model, matrices);
+
+        HashMap<String, NoArgumentFunction<Integer[][]>> output = noArgFunctionsHashMapFiller.fillNewHashMap(actionsKeys, functions);
 
         return output;
     }

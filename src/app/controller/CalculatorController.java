@@ -1,6 +1,7 @@
 package app.controller;
 
 import app.controller.utils.HashMapsGenerator;
+import app.controller.utils.NoArgumentFunction;
 import app.entity.VisualMatrix;
 import app.enums.Actions;
 import app.enums.Matrices;
@@ -21,6 +22,7 @@ public class CalculatorController {
 
     private final HashMap<String, VisualMatrix> matricesHashMap;
     private final HashMap<String, JButton> buttonsHashMap;
+    private final HashMap<String, NoArgumentFunction<Integer[][]>> noArgFunctionshashMap;
     private final HashMap<String, Consumer<VisualMatrix>> functionsHashMap;
     private final HashMap<String, JTextField> inputsHashMap;
     private final HashMap<String, BiConsumer<VisualMatrix, String>> biFunctionsHashMap;
@@ -32,6 +34,7 @@ public class CalculatorController {
 
         this.matricesHashMap = HashMapsGenerator.getMatricesHashMap(calculatorView);
         this.buttonsHashMap = HashMapsGenerator.getButtonsHashMap(calculatorView);
+        this.noArgFunctionshashMap = HashMapsGenerator.getNoArgFunctionHashMap(calculatorModel, matricesHashMap);
         this.functionsHashMap = HashMapsGenerator.getFunctionsHashMap(calculatorModel, matricesHashMap);
         this.inputsHashMap = HashMapsGenerator.getInputsHashMap(calculatorView);
         this.biFunctionsHashMap = HashMapsGenerator.getBiFunctionsHashMap(calculatorModel);
@@ -47,18 +50,12 @@ public class CalculatorController {
 
         addActionListenerForOneMatrix(Actions.TRANSPOSE.name(), Matrices.MATRIX_A.name());
         addActionListenerForOneMatrix(Actions.TRANSPOSE.name(), Matrices.MATRIX_B.name());
-        addActionListenerForOneMatrix(Actions.TRANSPOSE.name(), Matrices.RESULT_MATRIX.name());
 
         addActionListenerForOneMatrix(Actions.PASTE.name(), Matrices.MATRIX_A.name());
         addActionListenerForOneMatrix(Actions.PASTE.name(), Matrices.MATRIX_B.name());
 
         addBiActionListener(Actions.SCALAR_MULTIPLY.name(), Matrices.MATRIX_A.name());
         addBiActionListener(Actions.SCALAR_MULTIPLY.name(), Matrices.MATRIX_B.name());
-        addBiActionListener(Actions.SCALAR_MULTIPLY.name(), Matrices.RESULT_MATRIX.name());
-
-        addBiActionListener(Actions.POWER.name(), Matrices.MATRIX_A.name());
-        addBiActionListener(Actions.POWER.name(), Matrices.MATRIX_B.name());
-        addBiActionListener(Actions.POWER.name(), Matrices.RESULT_MATRIX.name());
     }
 
     private boolean isMatrixValid(String key) {
@@ -68,10 +65,11 @@ public class CalculatorController {
     private void addActionListenerForTwoMatrices(String key) {
         buttonsHashMap.get(key).addActionListener(l -> {
             if (isMatrixValid(Matrices.MATRIX_A.name()) && isMatrixValid(Matrices.MATRIX_B.name())) {
-
                 calculatorView.clearLabel();
-                functionsHashMap.get(key).accept(matricesHashMap.get(Matrices.RESULT_MATRIX.name()));
+                Integer[][] result = noArgFunctionshashMap.get(key).apply();
+                createResult(result.length, result[0].length);
 
+                matricesHashMap.get(Matrices.RESULT_MATRIX.name()).fillFields(result);
             } else {
                 calculatorView.setLabelText(StringConstants.INCORRECT_MATRIX_INPUT_MSG);
             }
@@ -103,6 +101,30 @@ public class CalculatorController {
                 calculatorView.setLabelText(StringConstants.INCORRECT_MATRIX_INPUT_MSG);
             }
         });
+    }
+
+    public void createResult(int rows, int columns) {
+        calculatorView.createResultMatrix(rows, columns);
+
+        matricesHashMap.put(Matrices.RESULT_MATRIX.name(), calculatorView.getResultMatrix());
+
+        String transposeKey = Actions.TRANSPOSE.name() + "_" + Matrices.RESULT_MATRIX.name();
+        buttonsHashMap.put(transposeKey, calculatorView.getResultMatrixTranspositionButton());
+        String scalarMultiplicationKey = Actions.SCALAR_MULTIPLY.name() + "_" + Matrices.RESULT_MATRIX.name();
+        buttonsHashMap.put(scalarMultiplicationKey, calculatorView.getResultMatrixScalarMultiplicationButton());
+        String powerKey = Actions.POWER.name() + "_" + Matrices.RESULT_MATRIX.name();
+        buttonsHashMap.put(powerKey, calculatorView.getResultMatrixPowerButton());
+
+        inputsHashMap.put(scalarMultiplicationKey, calculatorView.getResultMatrixScalarMultiplicationInput());
+        inputsHashMap.put(powerKey, calculatorView.getResultMatrixPowerInput());
+
+
+        addActionListenerForOneMatrix(Actions.TRANSPOSE.name(), Matrices.RESULT_MATRIX.name());
+        addBiActionListener(Actions.SCALAR_MULTIPLY.name(), Matrices.RESULT_MATRIX.name());
+        addBiActionListener(Actions.POWER.name(), Matrices.RESULT_MATRIX.name());
+
+        addBiActionListener(Actions.POWER.name(), Matrices.MATRIX_A.name());
+        addBiActionListener(Actions.POWER.name(), Matrices.MATRIX_B.name());
     }
 
     public JComboBox<Integer> getMatrixARowSelector() {
