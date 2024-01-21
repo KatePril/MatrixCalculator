@@ -13,8 +13,10 @@ import app.view.elements.CalculatorFrame;
 
 import javax.swing.*;
 import java.util.HashMap;
+import java.util.Objects;
 import java.util.function.BiConsumer;
 import java.util.function.Consumer;
+import java.util.function.Function;
 
 public class CalculatorController {
     private final CalculatorView calculatorView;
@@ -23,6 +25,8 @@ public class CalculatorController {
     private final HashMap<String, VisualMatrix> matricesHashMap;
     private final HashMap<String, JButton> buttonsHashMap;
     private final HashMap<String, NoArgumentFunction<Integer[][]>> noArgFunctionshashMap;
+
+    private final HashMap<String, Function<VisualMatrix, Integer[][]>> argFunctionshashMap;
     private final HashMap<String, Consumer<VisualMatrix>> functionsHashMap;
     private final HashMap<String, JTextField> inputsHashMap;
     private final HashMap<String, BiConsumer<VisualMatrix, String>> biFunctionsHashMap;
@@ -35,6 +39,7 @@ public class CalculatorController {
         this.matricesHashMap = HashMapsGenerator.getMatricesHashMap(calculatorView);
         this.buttonsHashMap = HashMapsGenerator.getButtonsHashMap(calculatorView);
         this.noArgFunctionshashMap = HashMapsGenerator.getNoArgFunctionHashMap(calculatorModel, matricesHashMap);
+        this.argFunctionshashMap = HashMapsGenerator.getArgFunctionsHashmap(calculatorModel, matricesHashMap);
         this.functionsHashMap = HashMapsGenerator.getFunctionsHashMap(calculatorModel, matricesHashMap);
         this.inputsHashMap = HashMapsGenerator.getInputsHashMap(calculatorView);
         this.biFunctionsHashMap = HashMapsGenerator.getBiFunctionsHashMap(calculatorModel);
@@ -51,11 +56,17 @@ public class CalculatorController {
         addActionListenerForOneMatrix(Actions.TRANSPOSE.name(), Matrices.MATRIX_A.name());
         addActionListenerForOneMatrix(Actions.TRANSPOSE.name(), Matrices.MATRIX_B.name());
 
-        addActionListenerForOneMatrix(Actions.PASTE.name(), Matrices.MATRIX_A.name());
-        addActionListenerForOneMatrix(Actions.PASTE.name(), Matrices.MATRIX_B.name());
+        addPasteActionListener(Actions.PASTE.name(), Matrices.MATRIX_A.name());
+        addPasteActionListener(Actions.PASTE.name(), Matrices.MATRIX_B.name());
 
         addBiActionListener(Actions.SCALAR_MULTIPLY.name(), Matrices.MATRIX_A.name());
         addBiActionListener(Actions.SCALAR_MULTIPLY.name(), Matrices.MATRIX_B.name());
+    }
+
+    private void addMatrixActionListeners(String matrixKey) {
+        addActionListenerForOneMatrix(Actions.TRANSPOSE.name(), matrixKey);
+        addPasteActionListener(Actions.PASTE.name(), matrixKey);
+        addBiActionListener(Actions.SCALAR_MULTIPLY.name(), matrixKey);
     }
 
     private boolean isMatrixValid(String key) {
@@ -69,6 +80,7 @@ public class CalculatorController {
                 Integer[][] result = noArgFunctionshashMap.get(key).apply();
                 createResult(result.length, result[0].length);
 
+                calculatorView.getFrame().repaint();
                 matricesHashMap.get(Matrices.RESULT_MATRIX.name()).fillFields(result);
             } else {
                 calculatorView.setLabelText(StringConstants.INCORRECT_MATRIX_INPUT_MSG);
@@ -82,6 +94,27 @@ public class CalculatorController {
             if (isMatrixValid(keyMatrix)) {
                 calculatorView.clearLabel();
                 functionsHashMap.get(keyAction).accept(matricesHashMap.get(keyMatrix));
+            } else {
+                calculatorView.setLabelText(StringConstants.INCORRECT_MATRIX_INPUT_MSG);
+            }
+        });
+    }
+
+    private void addPasteActionListener(String keyAction, String keyMatrix) {
+        buttonsHashMap.get(keyAction + "_" + keyMatrix).addActionListener(l -> {
+            if (isMatrixValid(keyMatrix)) {
+                calculatorView.clearLabel();
+                Integer[][] result = argFunctionshashMap.get(keyAction).apply(matricesHashMap.get(keyMatrix));
+                if (Objects.equals(keyMatrix, Matrices.MATRIX_A.name())) {
+                    calculatorView.createMatrixA(result);
+                } else if (Objects.equals(keyMatrix, Matrices.MATRIX_B.name())) {
+                    calculatorView.createMatrixB(result);
+                }
+
+                // BUG!!!!!
+//                addMatrixActionListeners(keyMatrix);
+                calculatorView.getFrame().repaint();
+//                matricesHashMap.get(keyMatrix).fillFields(result);
 
             } else {
                 calculatorView.setLabelText(StringConstants.INCORRECT_MATRIX_INPUT_MSG);

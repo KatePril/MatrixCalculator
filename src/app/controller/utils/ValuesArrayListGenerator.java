@@ -23,7 +23,6 @@ public final class ValuesArrayListGenerator {
 
         matrices.add(calculatorView.getMatrixA());
         matrices.add(calculatorView.getMatrixB());
-//        matrices.add(calculatorView.getResultMatrix());
 
         return matrices;
     }
@@ -37,15 +36,12 @@ public final class ValuesArrayListGenerator {
 
         buttons.add(view.getMatrixATranspositionButton());
         buttons.add(view.getMatrixBTranspositionButton());
-//        buttons.add(view.getResultMatrixTranspositionButton());
 
         buttons.add(view.getMatrixAScalarMultiplicationButton());
         buttons.add(view.getMatrixBScalarMultiplicationButton());
-//        buttons.add(view.getResultMatrixScalarMultiplicationButton());
 
         buttons.add(view.getMatrixAPowerButton());
         buttons.add(view.getMatrixBPowerButton());
-//        buttons.add(view.getResultMatrixPowerButton());
 
         buttons.add(view.getPasteMatrixAButton());
         buttons.add(view.getPasteMatrixBButton());
@@ -58,11 +54,9 @@ public final class ValuesArrayListGenerator {
 
         inputs.add(view.getMatrixAScalarMultiplicationInput());
         inputs.add(view.getMatrixBScalarMultiplicationInput());
-//        inputs.add(view.getResultMatrixScalarMultiplicationInput());
 
         inputs.add(view.getMatrixAPowerInput());
         inputs.add(view.getMatrixBPowerInput());
-//        inputs.add(view.getResultMatrixPowerInput());
 
         return inputs;
     }
@@ -121,11 +115,17 @@ public final class ValuesArrayListGenerator {
             }
         );
 
+        return functions;
+    }
+
+    public static ArrayList<Function<VisualMatrix,  Integer[][]>> getArgFunctionValues(CalculatorModel model, HashMap<String, VisualMatrix> matrices) {
+        ArrayList<Function<VisualMatrix,  Integer[][]>> functions = new ArrayList<>();
+
         functions.add((matrix) -> {
-                String[][] matrixValues = matrices.get(Matrices.RESULT_MATRIX.name()).getValues();
-                Integer[][] matrixIntValues = Converter.convertStringArrayToIntArray(matrixValues);
-                matrix.fillFields(matrixIntValues);
-            }
+                    String[][] matrixValues = matrices.get(Matrices.RESULT_MATRIX.name()).getValues();
+                    Integer[][] matrixIntValues = Converter.convertStringArrayToIntArray(matrixValues);
+                    return matrixIntValues;
+                }
         );
 
         return functions;

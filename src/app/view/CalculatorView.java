@@ -25,6 +25,16 @@ public class CalculatorView {
         frame.getPanel().createResultMatrix(rows, columns);
     }
 
+    public void createMatrixA(Integer[][] values) {
+        frame.getPanel().getPanel().getMatrixA().getPanel().getMatrix().setMatrix(values);
+        frame.repaint();
+    }
+
+    public void createMatrixB(Integer[][] values) {
+        frame.getPanel().getPanel().getMatrixB().getPanel().getMatrix().setMatrix(values);
+        frame.repaint();
+    }
+
     public CalculatorFrame getFrame() {
         return frame;
     }

@@ -29,6 +29,14 @@ public class MatrixPanel extends JPanel {
         return matrix;
     }
 
+    public void setMatrix(Integer[][] values) {
+        if (matrix != null) {
+            matrix.deleteMatrix();
+        }
+        this.matrix = new VisualMatrix(values);
+        matrix.drawMatrix(this);
+    }
+
     @Override
     public int getWidth() {
         return PANEL_WIDTH;

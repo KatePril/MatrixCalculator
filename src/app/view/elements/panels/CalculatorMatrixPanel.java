@@ -27,22 +27,37 @@ public class CalculatorMatrixPanel extends JPanel {
     public void createResultMatrix(int rows, int columns) {
         resultMatrix = new ResultPanel(rows, columns);
         add(resultMatrix);
+        repaint();
     }
+
+    public void createMatrixA(int rows, int columns) {
+        if (matrixA != null) {
+            matrixA.removeAll();
+        }
+
+        matrixA = createFullMatrixPanel(rows, columns);
+        add(matrixA);
+    }
+    public void createMatrixB(int rows, int columns) {
+        if (matrixB != null) {
+            matrixB.removeAll();
+        }
+
+        matrixB = createFullMatrixPanel(rows, columns);
+        add(matrixB);
+    }
+
 
     private void fillPanel(HashMap<String, Integer> sizes) {
         int rowsA = sizes.get(Sizes.MATRIX_A_ROWS.name());
         int columnsA = sizes.get(Sizes.MATRIX_A_COLUMNS.name());
-        matrixA = createFullMatrixPanel(rowsA, columnsA);
-        add(matrixA);
+        createMatrixA(rowsA, columnsA);
 
         createButtonsPanel();
 
         int rowsB = sizes.get(Sizes.MATRIX_B_ROWS.name());
         int columnsB = sizes.get(Sizes.MATRIX_B_COLUMNS.name());
-        matrixB = createFullMatrixPanel(rowsB, columnsB);
-        add(matrixB);
-
-//        createResultMatrix(rowsA, columnsB);
+        createMatrixB(rowsB, columnsB);
     }
 
     public FullMatrixPanel getMatrixA() {

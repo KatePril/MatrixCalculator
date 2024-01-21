@@ -24,6 +24,19 @@ public class VisualMatrix {
         }
     }
 
+    public VisualMatrix(Integer[][] values) {
+        this.ROWS = values.length;
+        this.COLUMNS = values[0].length;
+        fields = new MatrixElementInput[ROWS][COLUMNS];
+        ElementSetterIterator<MatrixElementInput> iterator = new ElementSetterRowIterator<>(fields);
+
+        while(iterator.hasNext()) {
+            iterator.setNext(new MatrixElementInput());
+        }
+
+        fillFields(values);
+    }
+
     public String[][] getValues() {
         String[][] values = new String[ROWS][COLUMNS];
         Iterator<MatrixElementInput> fieldsIterator = new RowIterator<>(fields);
@@ -56,6 +69,14 @@ public class VisualMatrix {
 
         while (fieldsIterator.hasNext()) {
             panel.add(fieldsIterator.next());
+        }
+    }
+
+    public void deleteMatrix() {
+        Iterator<MatrixElementInput> fieldsIterator = new RowIterator<>(fields);
+
+        while (fieldsIterator.hasNext()) {
+            fieldsIterator.next().removeAll();
         }
     }
 }

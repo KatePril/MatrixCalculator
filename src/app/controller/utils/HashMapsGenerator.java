@@ -73,6 +73,17 @@ public final class HashMapsGenerator {
         return output;
     }
 
+    public static HashMap<String, Function<VisualMatrix, Integer[][]>> getArgFunctionsHashmap(CalculatorModel model, HashMap<String, VisualMatrix> matrices) {
+        HashMapFiller<String, Function<VisualMatrix, Integer[][]>> functionsHashMapFiller = new HashMapFiller<>();
+
+        ArrayList<String> actionsKeys = KeysArrayListGenerator.getArgActionsKeys();
+        ArrayList<Function<VisualMatrix, Integer[][]>> functions = ValuesArrayListGenerator.getArgFunctionValues(model, matrices);
+
+        HashMap<String, Function<VisualMatrix, Integer[][]>> output = functionsHashMapFiller.fillNewHashMap(actionsKeys, functions);
+
+        return output;
+    }
+
     public static HashMap<String, BiConsumer<VisualMatrix, String>> getBiFunctionsHashMap(CalculatorModel model) {
         HashMapFiller<String, BiConsumer<VisualMatrix, String>> biFunctionsHashMapFiller = new HashMapFiller<>();
 
