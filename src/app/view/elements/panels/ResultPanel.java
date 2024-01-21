@@ -8,6 +8,7 @@ public class ResultPanel extends JPanel {
     public ResultPanel(int rows, int columns) {
         add(new JLabel("="));
         matrix = new MatrixWithButtonsPanel(rows, columns);
+
         add(matrix);
     }
 
