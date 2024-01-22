@@ -6,6 +6,8 @@ import app.model.CalculatorModel;
 import app.model.MatrixPowerer;
 import app.model.MatrixScalarMultiplier;
 import app.utils.Converter;
+import app.utils.StringConstants;
+import app.utils.Validator;
 import app.view.CalculatorView;
 
 import javax.swing.*;
@@ -13,6 +15,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.function.BiConsumer;
 import java.util.function.Consumer;
+import java.util.function.Predicate;
 
 public final class ValuesArrayListGenerator {
 
@@ -145,5 +148,23 @@ public final class ValuesArrayListGenerator {
         );
 
         return functions;
+    }
+
+    public static ArrayList<Predicate<String>> getValidationValues() {
+        ArrayList<Predicate<String>> validationArray = new ArrayList<>();
+
+        validationArray.add((input) -> Validator.isScalarValid(input));
+        validationArray.add((input) -> Validator.isPowerValid(input));
+
+        return validationArray;
+    }
+
+    public static ArrayList<String> getValidationMsgValues() {
+        ArrayList<String> msgArray = new ArrayList<>();
+
+        msgArray.add(StringConstants.INCORRECT_SCALAR_MSG);
+        msgArray.add(StringConstants.INCORRECT_POWER_MSG);
+
+        return msgArray;
     }
 }
